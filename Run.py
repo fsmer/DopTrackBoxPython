@@ -13,7 +13,7 @@ def Run(mode1, line0, line1, line2, PosStation, satelliteindex, indexvector, pri
  
 
     if mode == 0:
-        LoopallSats(mode, line0, line1,line2,Rstation, PosStation)
+        LoopallSats(mode, line0, line1,line2,Rstation, PosStation, satelliteindex)
     elif mode == 1:
         #in the UI the priority list is added to the plot and also the one selected now. In case no priority list then just satelliteindex
         LoopxSats(mode, line0, line1,line2,Rstation,satelliteindex, indexvector, loopdays, loophours, loopminutes, PosStation, minback)

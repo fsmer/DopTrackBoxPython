@@ -1,9 +1,2 @@
-Satellite	Inview	Elevation	Azimuth
-
-SAUDISAT 1C (SO-50)     	Now	2	0	
-STARS (KUKAI)           	Now	7	0	
-XW-2B                   	Now	0	0	
-AAUSAT 4                	Now	1	0	
-LITUANICASAT-2          	Now	2	0	
-AALTO-1                 	Now	7	0	
-ES'HAIL 2               	Now	27	0	
+SatelliteDELFI-C3 (DO-64)        
+Start time	End time	Maximum elevation	Start azimuth	End azimuth

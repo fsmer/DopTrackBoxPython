@@ -3,7 +3,7 @@ def LoopxSats(mode, line0, line1,line2,Rstation,index, indexvector, loopdays, lo
     from Continue import Continue
     from Choosetime import Choosetime   
     from PlotOnMap import PlotOnMap
-    
+    from maketxtfile import maketxtfile
     
     
     
@@ -22,15 +22,18 @@ def LoopxSats(mode, line0, line1,line2,Rstation,index, indexvector, loopdays, lo
     timevector = []
 
     lenindexvector = len(indexvector)
-    indexer.append(index)
+    
 
     if lenindexvector > 0:
         
         for i in range(0,lenindexvector-1):
             indexer.append(indexvector[i])
+
+    else:
+        indexer.append(index)
         
 
-    for l in range(0,len(indexer)):
+    for l in range(0,len(indexer)-1):
         j = indexer[l]
         for k in range(0,len(year)-1):
 
@@ -48,18 +51,11 @@ def LoopxSats(mode, line0, line1,line2,Rstation,index, indexvector, loopdays, lo
             timevector.append(time)
             k +=1
 
-        cartesianvector.append(cartesianvector[l])
-        elevationvector.append(elevationvector[l])
-        azimuthvector.append(azimuthvector[l])
-        inviewvector.append(inviewvector[l])
-        latitudevector.append(latitudevector[l])
-        longitudevector.append(longitudevector[l])
-        timevector.append(timevector[l])
 
         j +=1
 
     #make txt file
-    #maketxtfile()
+    maketxtfile(inviewvector,line0,elevationvector,azimuthvector,mode, indexer, timevector)
     #make yml file
     # makeyamlfile()
     #plot all sats on map
