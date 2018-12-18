@@ -1,12 +1,29 @@
-def LoopxSats(mode, line0, line1,line2,Rstation, index,indexvector):
-    #first check priority list?
+def LoopxSats(mode, line0, line1,line2,Rstation,index, indexvector, loopdays, loophours, loopminutes, PosStation, minback):
+    from SGP4 import SGP4
+    from Continue import Continue
+    from Choosetime import Choosetime   
+    from PlotOnMap import PlotOnMap
+    
+    
+    
+    
 
-    #create time vector from -2 hour to 2 hour                120 minutes forward 120 minutes back
-    year, month, day, hour, minute, second = Choosetime(0, 0, 120, 120)
+
+    #create time vector from -2 hour to 2 hour                #add run time
+    year, month, day, hour, minute, second, regionaltime = Choosetime(loopdays, loophours, loopminutes, minback)
     #isolate 
     indexer = []
+    cartesianvector = []
+    elevationvector = []
+    azimuthvector = []
+    inviewvector = []
+    latitudevector = []
+    longitudevector = []
+    timevector = []
+
     lenindexvector = len(indexvector)
     indexer.append(index)
+
     if lenindexvector > 0:
         
         for i in range(0,lenindexvector-1):
@@ -31,12 +48,26 @@ def LoopxSats(mode, line0, line1,line2,Rstation, index,indexvector):
             timevector.append(time)
             k +=1
 
-        cartesianvector.append(cartesianvector[j])
-        elevationvector.append(elevationvector[j])
-        azimuthvector.append(azimuthvector[j])
-        inviewvector.append(inviewvector[j])
-        latitudevector.append(latitudevector[j])
-        longitudevector.append(longitudevector[j])
-        timevector.append(timevector[j])
+        cartesianvector.append(cartesianvector[l])
+        elevationvector.append(elevationvector[l])
+        azimuthvector.append(azimuthvector[l])
+        inviewvector.append(inviewvector[l])
+        latitudevector.append(latitudevector[l])
+        longitudevector.append(longitudevector[l])
+        timevector.append(timevector[l])
 
         j +=1
+
+    #make txt file
+    #maketxtfile()
+    #make yml file
+    # makeyamlfile()
+    #plot all sats on map
+    PlotOnMap(latitudevector, longitudevector, timevector, inviewvector,PosStation)
+    print("done")
+    #plot view of sky
+    #plotinsight()
+
+    
+
+

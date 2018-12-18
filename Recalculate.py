@@ -1,18 +1,16 @@
-def Recalculate(looptime, loopdays, satelliteindex, line0, line1, line2, stationlon1, stationlat1, hstation1):    
+def Recalculate(looptime, loopdays, loophours, loopminutes, satelliteindex, line0, line1, line2, stationlon1, stationlat1, hstation1):    
     from SGP4 import SGP4
     from Choosetime import Choosetime
     from Continue import Continue
     from PlotOnMap import PlotOnMap
-    from maketxtfile import maketxtfile
-    from makeyamlfile import makeyamlfile
+
+
     ########################################################################################################################################
     #Define time
-    #looptime = 1 #set 1 for looping time,
-                 #set 0 for 'now'
-    #loopminutes = 1 #only used when looptime = 1, 
-                 #set for how many days te loop should be
-                 #only integers
-    year, month, day, hour, minute, second = Choosetime(looptime, loopdays)
+    #input: days, hours, minutes, negative minutes
+    year, month, day, hour, minute, second, localtime = Choosetime(loopdays, loophours, loopminutes, 0)
+    #print(localtime)
+
     
     ########################################################################################################################################
     #Define satellite
@@ -36,15 +34,11 @@ def Recalculate(looptime, loopdays, satelliteindex, line0, line1, line2, station
     longitudevector = []
     timevector = []
 
-    PosStation = (stationlon1, stationlat1, hstation1)
+    PosStation = (stationlon1,  stationlat1, hstation1)
 
     from GEOD2CART import GEOD2CART
-    #THIS IS NOT CORRECT just ask user to give XYZ =D
     Rstation = GEOD2CART(PosStation)
-    print(Rstation)
-    Rstation = [3922.57605980654, 298.869320744213,5003.59629628637]
-    print(Rstation)
-    # print('Rstation', Rstation)/
+    #print('Rstation', Rstation)
 
     if loopsat == 1:
         k = 0
@@ -58,7 +52,7 @@ def Recalculate(looptime, loopdays, satelliteindex, line0, line1, line2, station
             inviewvector.append(inview)
             latitudevector.append(latitude)
             longitudevector.append(longitude)
-            timevector.append([time])
+            timevector.append(time)
             j +=1
     elif looptime == 1:
         j = satelliteindex
@@ -66,6 +60,7 @@ def Recalculate(looptime, loopdays, satelliteindex, line0, line1, line2, station
             Carthesian = (SGP4(line1[j], line2[j], year[k], month[k], day[k], hour[k], minute[k], second[k]))
             cartesianvector.append(Carthesian)
             time = (year[k], month[k], day[k], hour[k], minute[k], second[k])
+            cartesianvector.append(Carthesian)
             inview, latitude, longitude, elevation, azimuth = Continue(Carthesian[0], time, Rstation)
             elevationvector.append(elevation)
             azimuthvector.append(azimuth)
@@ -74,18 +69,48 @@ def Recalculate(looptime, loopdays, satelliteindex, line0, line1, line2, station
             longitudevector.append(longitude)
             timevector.append(time)
             k +=1
-            
     else:
         print('errorloop')
     # for n in range(0, len(line0)):
     #     print(latitudevector[n], longitudevector[n], line0[n])
     #print(Carthesian)
+    #####################################################################################################################
+    #Split passings, needed inviewvector and time
+    beginpassing = []
+    endpassing = []
+    #begin or end is in passing
+    if inviewvector[0] is True:
+        beginpassing.append(0)
 
 
-    maketxtfile(inviewvector, timevector, line0)
-    makeyamlfile(inviewvector, timevector)
+    
+    for j in range(1, len(inviewvector)):
+        if inviewvector[j]  is True and inviewvector[j-1] is False:
+           beginpassing.append(j)
+           j=j+1
+        elif inviewvector[j]  is False and inviewvector[j-1] is True:
+            endpassing.append(j)
 
-    PlotOnMap(latitudevector, longitudevector, timevector, inviewvector, PosStation)
+    if inviewvector[len(inviewvector)-1] is True:
+        endpassing.append(len(inviewvector)-1)
+
+
+    for j in range(0, len(beginpassing)):
+        timepassing = []
+        for n in range(beginpassing[j], endpassing[j]):
+            timepassing.append(timevector[n])
+        filename = 'doptrackinfo' + str(j) + '.yml'
+        file = open(filename, 'w')
+        file.write(str(timepassing))
+        file.close()
+
+
+    print(beginpassing, endpassing)
+    #print(timevector)
+
+
+    PlotOnMap(latitudevector, longitudevector, timevector, inviewvector,PosStation)
     print("done")
     # plt.show()
+
     return

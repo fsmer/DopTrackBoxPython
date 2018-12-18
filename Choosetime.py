@@ -1,12 +1,14 @@
-def Choosetime(looptime,loopdays):
+def Choosetime(loopdays, loophours, loopminutes, negativeminutes):
     from datetime import datetime
     from datetime import timedelta
     import pytz
 
     j = 0
     
-    time = datetime.now(pytz.utc)
+    time = datetime.now(pytz.utc) + timedelta(minutes = -negativeminutes)
+    localtime0 = datetime.now() + timedelta(minutes = -negativeminutes)
     #print(time)
+    localtime = []
     year = []
     month = []
     day = []
@@ -17,21 +19,20 @@ def Choosetime(looptime,loopdays):
 
 
     #Loop
-    if looptime == 1:
-        addedminutes = loopdays*24*60
-    else:
-        addedminutes= 1
-    for j in range (0,addedminutes):
+    addedminutes = loopdays*24*60+loophours*60+loopminutes
+    for j in range (-negativeminutes, addedminutes):
           year.append(time.year)
           month.append(time.month)
           day.append(time.day)
           hour.append(time.hour)
           minute.append(time.minute)
           second.append(time.second)
+          localtime.append(localtime0)
 
-          time = time + timedelta(minutes=1) 
+          time = time + timedelta(minutes=1)
+          localtime0 = localtime0 + timedelta(minutes=1)
           j +=1
 
     #print(minute)
 
-    return(year, month, day, hour, minute, second) 
+    return(year, month, day, hour, minute, second, localtime) 

@@ -1,4 +1,3 @@
-
 def SatElevation(station , sat):
     import numpy as np
     #we have to do vector operations so get numpy and get vectors going

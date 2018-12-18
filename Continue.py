@@ -37,7 +37,7 @@ def Continue(Rsat, time, Rstation):
 
     #check if satellite is insight
     #input Rstation km, RsatRotaded km and Height of satellite. 
-    inview = Insight(Rstation, RsatRotated, h)
+    inview = Insight(Rstation, RsatRotated)
     #print('inview',inview)
     #output is 1 when in sight 0 when not
 
