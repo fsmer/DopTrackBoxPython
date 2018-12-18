@@ -1,0 +1,33 @@
+Sat:
+ 	 	Predict: 5
+ 	 	EAzimuth: 5
+ 	 	Elevation: 5
+ 	 	Length of pass: 5
+ 	 	SAzimuth: 5
+ 	 	time used UTC: 5
+ 	 	timezone used: 5
+ 	 	used TLE line1: 5
+ 	 	used TLE line2: 5
+ 	Record:
+ 	 	Start of recording: 5
+ 	 	num_sample: 5
+ 	 	sample_rate: 5
+ 	 	time1 UTC: 5
+ 	 	time2 UTC: 5
+ 	 	time3 LT: 5
+ 	State:
+ 	 	Antenna: 5
+ 	 	NORADID: 5
+ 	 	Name: 5
+ 	 	Priority: 5
+			Tuning Freq.03
+			3
+			
+			
+			
+		uency: 5
+ 	Station:
+ 	 	Height: 5
+ 	 	Lat: 5
+ 	 	Lon: 5
+ 	 	Name: funcube

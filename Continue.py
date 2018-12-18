@@ -37,17 +37,14 @@ def Continue(Rsat, time, Rstation):
 
     #check if satellite is insight
     #input Rstation km, RsatRotaded km and Height of satellite. 
-    inview = Insight(Rstation, RsatRotated)
+    inview = Insight(Rstation, RsatRotated, h)
     #print('inview',inview)
     #output is 1 when in sight 0 when not
 
     #get elevation and azimuth?
-    MinElevation = 20
     #input Rstation and Rsatrotated
     if inview == True:
         elevation, azimuth = SatElevation(Rstation, RsatRotated)
-        if elevation <= MinElevation:
-            inview = False
     else:
         elevation = 'Not in sight'
         azimuth = 'Not in sight'

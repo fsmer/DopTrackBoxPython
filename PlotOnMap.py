@@ -15,19 +15,22 @@ def PlotOnMap(Latvector,Lonvector, time, insight, station):
 
 
     plt.plot(Lonvector, Latvector, 'b.') 
+    plt.plot(Lonvector[0],Latvector[0],'rx')
     plt.plot(station[0],station[1],'r+')
     plt.xlabel('Lontitude')
     plt.ylabel('Latitude')
     plt.title('Satellite or groundtrack plot')
 
 
-    fig2, ax2 = plt.subplots()
-    x = np.linspace(1,len(insight))
-    plt.plot(insight, '.')
-    # ax2.set_aspect(2)
+    # #PLOT WHEN IN VIEW
+    # fig2, ax2 = plt.subplots()
+    # x = np.linspace(1,len(insight), len(insight))
 
-    plt.xticks(x, time)
-    plt.xticks(rotation=90)
+    # plt.plot(insight, '.')
+    # # ax2.set_aspect(2)
+
+    # plt.xticks(x, time)
+    # plt.xticks(rotation=90)
 
     
     plt.show(block=False)

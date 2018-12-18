@@ -1,5 +1,5 @@
 
-def Insight(station, sat):
+def Insight(station, sat, h):
     import numpy as np
     
     #we need sat location and groundstation location in carthesian
@@ -14,7 +14,7 @@ def Insight(station, sat):
     Rsat = np.linalg.norm(sat)
     Rstat =np.linalg.norm(station)
 
-    RdefRH = R/(Rsat)
+    RdefRH = R/Rsat
     Rdotr = station.dot(sat)
     RdotrdefRr = Rdotr/(Rsat*Rstat)
 
