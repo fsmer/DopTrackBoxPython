@@ -20,18 +20,27 @@ def LoopxSats(mode, line0, line1,line2,Rstation,index, indexvector, loopdays, lo
     latitudevector = []
     longitudevector = []
     timevector = []
+    
+    xelevationvector = []
+    xazimuthvector = []
+    xinviewvector = []
+    xlatitudevector = []
+    xlongitudevector = []
+    xtimevector = []
 
     lenindexvector = len(indexvector)
 
     if lenindexvector > 0:
         
-        for i in range(0,lenindexvector-1):
+        for i in range(0,lenindexvector):
             indexer.append(indexvector[i])
 
     else:
         indexer.append(index)
         
-    print(indexer)
+    # indexer klopt nu niet
+    print("indexer" '%s' %(indexer))
+    
     for l in range(0,len(indexer)):
         j = indexer[l]
         for k in range(0,len(year)-1):
@@ -48,14 +57,35 @@ def LoopxSats(mode, line0, line1,line2,Rstation,index, indexvector, loopdays, lo
             latitudevector.append(latitude)
             longitudevector.append(longitude)
             timevector.append(time)
-            
+
+        # print(inviewvector)
+        xelevationvector.append([elevationvector])
+        xazimuthvector.append([azimuthvector])
+        xinviewvector.append(inviewvector)
+        xlatitudevector.append([latitudevector])
+        xlongitudevector.append([longitudevector])
+        xtimevector.append([timevector])
+        
+
+        cartesianvector = []
+        elevationvector = []
+        azimuthvector = []
+        inviewvector = []
+        latitudevector = []
+        longitudevector = []
+        timevector = []
+
+
+
+
+    
 
     #make txt file
-    maketxtfile(inviewvector,line0,elevationvector,azimuthvector,mode, indexer, timevector)
+    maketxtfile(xinviewvector,line0,xelevationvector,xazimuthvector,mode, indexer, xtimevector)
     #make yml file
     # makeyamlfile()
     #plot all sats on map
-    PlotOnMap(latitudevector, longitudevector, timevector, inviewvector,PosStation)
+    # PlotOnMap(latitudevector, longitudevector, timevector, inviewvector,PosStation)
     print("done")
     #plot view of sky
     #plotinsight()

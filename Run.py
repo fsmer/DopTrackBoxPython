@@ -18,7 +18,8 @@ def Run(mode1, line0, line1, line2, PosStation, satelliteindex, indexvector, pri
         #in the UI the priority list is added to the plot and also the one selected now. In case no priority list then just satelliteindex
         LoopxSats(mode, line0, line1,line2,Rstation,satelliteindex, indexvector, loopdays, loophours, loopminutes, PosStation, minback)
     elif mode == 2:
-        MakeYMLfiles(mode, line0, line1,line2,Rstation)
+        # MakeYMLfiles(mode, line0, line1,line2,Rstation)
+        print("MakeYMLfiles mode has not yet been developed")
     elif mode == 3:
         # LifeUpdating(mode, line0, line1,line2,Rstation)
         print("LifeUpdating mode has not yet been developed")
