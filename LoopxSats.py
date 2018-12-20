@@ -39,8 +39,8 @@ def LoopxSats(mode, line0, line1,line2,Rstation,index, indexvector, loopdays, lo
         indexer.append(index)
         
     # indexer klopt nu niet
-    print("indexer" '%s' %(indexer))
-    
+    # print("indexer" '%s' %(indexer))
+
     for l in range(0,len(indexer)):
         j = indexer[l]
         for k in range(0,len(year)-1):

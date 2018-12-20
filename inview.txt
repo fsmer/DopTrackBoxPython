@@ -1,14 +1,18 @@
-Satellite					Inview		Elevation	Azimuth
+SatelliteDELFI-C3 (DO-64)        
+Start time			||		End time			|| Maximum elevation || Start azimuth || End azimuth
+2018-12-20 17:22:6		2018-12-20 17:23:6				0					0				0
 
-ITAMSAT                 	Now			22			0
-SINAH 1                 	Now			25			0
-CUBESAT XI 5            	Now			13			0
-SWISSCUBE               	Now			4			0
-RASAT                   	Now			6			0
-LARES                   	Now			57			0
-GONETS-M 4              	Now			12			0
-UNIFORM 1               	Now			3			0
-GOMX4-A                 	Now			29			0
-SIRIUSSAT-2             	Now			10			0
-SURFSAT                 	Now			0			0
-ES'HAIL 2               	Now			27			0
+2018-12-20 18:51:6		2018-12-20 19:1:6				17					0				0
+
+2018-12-20 20:25:6		2018-12-20 20:36:6				53					0				0
+
+2018-12-20 22:3:6		2018-12-20 22:9:6				5					0				0
+
+2018-12-21 7:56:6		2018-12-21 8:5:6				12					0				0
+
+2018-12-21 9:30:6		2018-12-21 9:41:6				65					0				0
+
+2018-12-21 11:5:6		2018-12-21 11:14:6				10					0				0
+
+
+

@@ -31,8 +31,8 @@ def maketxtfile(inviewvector,line0,elevationvector,azimuthvector,mode, indexer, 
             file.write("\n")
             file.write("Start time" "\t" "\t" "\t" "||""\t" "\t" "End time" "\t" "\t" "\t" "||"" " "Maximum elevation"" " "||" " ""Start azimuth" " ""||" " ""End azimuth" "\n")
 
-            print("first loop")
-            print(elevationvector[k][0][0])
+            # print("first loop")
+            # print(elevationvector[k][0][0])
 
             runlen = len(inviewvector[0])
             # print(runlen)
