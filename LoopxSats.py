@@ -22,7 +22,6 @@ def LoopxSats(mode, line0, line1,line2,Rstation,index, indexvector, loopdays, lo
     timevector = []
 
     lenindexvector = len(indexvector)
-    
 
     if lenindexvector > 0:
         
@@ -32,8 +31,8 @@ def LoopxSats(mode, line0, line1,line2,Rstation,index, indexvector, loopdays, lo
     else:
         indexer.append(index)
         
-
-    for l in range(0,len(indexer)-1):
+    print(indexer)
+    for l in range(0,len(indexer)):
         j = indexer[l]
         for k in range(0,len(year)-1):
 
@@ -49,10 +48,7 @@ def LoopxSats(mode, line0, line1,line2,Rstation,index, indexvector, loopdays, lo
             latitudevector.append(latitude)
             longitudevector.append(longitude)
             timevector.append(time)
-            k +=1
-
-
-        j +=1
+            
 
     #make txt file
     maketxtfile(inviewvector,line0,elevationvector,azimuthvector,mode, indexer, timevector)

@@ -27,30 +27,33 @@ def maketxtfile(inviewvector,line0,elevationvector,azimuthvector,mode, indexer, 
         if len(indexer) == 1:
             file.write("Satellite" '%s' %(line0[indexer[0]]))
             file.write("\n")
-            file.write("Start time" "\t" "End time" "\t" "Maximum elevation" "\t" "Start azimuth" "\t" "End azimuth" "\n")
+            file.write("Start time" "\t" "\t" "\t" "||""\t" "\t" "End time" "\t" "\t" "\t" "||"" " "Maximum elevation"" " "||" " ""Start azimuth" " ""||" " ""End azimuth" "\n")
 
-            print(inviewvector)
             inviewvector[0] = False
-            inviewvector[len(inviewvector-1)] = False
+            inviewvector[(len(inviewvector)-2)] = False
+            inviewvector[(len(inviewvector)-1)] = False
+            maxelevation = 0
+            for i in range(0,len(inviewvector)-2):
+                
 
-            for i in range(0,len(inviewvector)-1):
-                maxelevation = 0
                 if elevationvector[i] > maxelevation:
                     maxelevation = elevationvector[i]
 
+
                 if (inviewvector[i] == False) & (inviewvector[i+1] == True):
-                    file.write('%s' %(timevector[i]))
-                    file.write("\t")
-                    startazimuth = azimuthvector[i]
+                    file.write('%s'"-"'%s'"-"'%s' " " '%s'":"'%s'":"'%s' %(timevector[i+1])) 
+                    file.write("\t" "\t")
+                    startazimuth = azimuthvector[i+1]
 
                 elif (inviewvector[i] == True) & (inviewvector[i+1] == False):
-                    file.write('%s' %(timevector[i]))
-                    file.write("\t")
+                    file.write('%s'"-"'%s'"-"'%s' " " '%s'":"'%s'":"'%s'  %(timevector[i]))
+                    file.write("\t" "\t" "\t" "\t" )
                     file.write('%d' %(maxelevation))
-                    file.write("\t")
+                    file.write("\t" "\t" "\t" "\t" "\t")
                     file.write('%d' %(startazimuth))
-                    file.write("\t")
+                    file.write("\t" "\t" "\t" "\t")
                     file.write('%d' %(azimuthvector[i]))
+                    file.write("\n")
                     file.write("\n")
                     maxelevation = 0
 
