@@ -3,6 +3,7 @@ def LoopallSats(mode, line0, line1, line2, Rstation, PosStation):
     from Continue import Continue
     from Choosetime import Choosetime
     from PlotOnMap import PlotOnMap
+    from maketxtfile import maketxtfile
     #create time vector (1 time value)
     year, month, day, hour, minute, second, regionaltime = Choosetime(0, 0, 1, 0)
 
@@ -31,7 +32,7 @@ def LoopallSats(mode, line0, line1, line2, Rstation, PosStation):
         j +=1
 
     #make txt file
-    #maketxtfile()
+    maketxtfile(inviewvector,line0,elevationvector,azimuthvector,mode)
     #make yml file
     # makeyamlfile()
     #plot all sats on map
@@ -39,3 +40,4 @@ def LoopallSats(mode, line0, line1, line2, Rstation, PosStation):
     print("done")
     #plot view of sky
     #plotinsight
+    return
