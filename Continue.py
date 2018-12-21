@@ -44,13 +44,10 @@ def Continue(Rsat, time, Rstation):
     #get elevation and azimuth?
     minimumelevation = 0
     #input Rstation and Rsatrotated
+    elevation, azimuth = SatElevation(Rstation, RsatRotated)
     if inview == True:
-        elevation, azimuth = SatElevation(Rstation, RsatRotated)
         if elevation <= minimumelevation:
             inview = 0
-    else:
-        elevation = 'Not in sight'
-        azimuth = 'Not in sight'
     #output in degrees
     #print('elev, azi',elevation,azimuth)
     #return insight, latitude, longitude, elevation, azimuth

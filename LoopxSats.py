@@ -3,14 +3,18 @@ def LoopxSats(mode, line0, line1,line2,Rstation,index, indexvector, loopdays, lo
     from Continue import Continue
     from Choosetime import Choosetime   
     from PlotOnMap import PlotOnMap
+    from maketxtfile import maketxtfile
     
     
     
-    
-
+    #in order to plot backward we add a minutes back this should not be used in the output I guess but only in the forward. 
 
     #create time vector from -2 hour to 2 hour                #add run time
+    minback = 120
     year, month, day, hour, minute, second, regionaltime = Choosetime(loopdays, loophours, loopminutes, minback)
+
+    samplesback = minback
+    
     #isolate 
     indexer = []
     cartesianvector = []
@@ -20,15 +24,26 @@ def LoopxSats(mode, line0, line1,line2,Rstation,index, indexvector, loopdays, lo
     latitudevector = []
     longitudevector = []
     timevector = []
+    
+    xelevationvector = []
+    xazimuthvector = []
+    xinviewvector = []
+    xlatitudevector = []
+    xlongitudevector = []
+    xtimevector = []
 
     lenindexvector = len(indexvector)
-    indexer.append(index)
 
     if lenindexvector > 0:
         
-        for i in range(0,lenindexvector-1):
+        for i in range(0,lenindexvector):
             indexer.append(indexvector[i])
+
+    else:
+        indexer.append(index)
         
+    # indexer klopt nu niet
+    # print("indexer" '%s' %(indexer))
 
     for l in range(0,len(indexer)):
         j = indexer[l]
@@ -46,24 +61,36 @@ def LoopxSats(mode, line0, line1,line2,Rstation,index, indexvector, loopdays, lo
             latitudevector.append(latitude)
             longitudevector.append(longitude)
             timevector.append(time)
-            k +=1
 
-        cartesianvector.append(cartesianvector[l])
-        elevationvector.append(elevationvector[l])
-        azimuthvector.append(azimuthvector[l])
-        inviewvector.append(inviewvector[l])
-        latitudevector.append(latitudevector[l])
-        longitudevector.append(longitudevector[l])
-        timevector.append(timevector[l])
+        # print(inviewvector)
+        # all of them are now in dubble brackets which is not needed can be removed but then also has to be remove din the next files
+        xelevationvector.append([elevationvector])
+        xazimuthvector.append([azimuthvector])
+        xinviewvector.append(inviewvector)
+        xlatitudevector.append([latitudevector])
+        xlongitudevector.append([longitudevector])
+        xtimevector.append([timevector])
+        
 
-        j +=1
+        cartesianvector = []
+        elevationvector = []
+        azimuthvector = []
+        inviewvector = []
+        latitudevector = []
+        longitudevector = []
+        timevector = []
+
+
+
+
+    
 
     #make txt file
-    #maketxtfile()
+    maketxtfile(xinviewvector,line0,xelevationvector,xazimuthvector,mode, indexer, xtimevector, samplesback)
     #make yml file
     # makeyamlfile()
     #plot all sats on map
-    PlotOnMap(latitudevector, longitudevector, timevector, inviewvector,PosStation)
+    PlotOnMap(xlatitudevector, xlongitudevector, xtimevector, xinviewvector, PosStation, minback, mode)
     print("done")
     #plot view of sky
     #plotinsight()

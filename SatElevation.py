@@ -19,7 +19,7 @@ def SatElevation(station , sat):
     omega = np.arccos(OSdefOS)
  
     elev =  (omega*180/np.pi - 90)*-1
-    print(elev)
+   
     azi = 0
 
     return (elev, azi)
