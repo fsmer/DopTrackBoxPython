@@ -55,8 +55,9 @@ def recalc():
     loopminutes = int(minutes.get())
     minback1 = int(minback.get())
     PosStation = [stationlon1, stationlat1, hstation1]
+    priority1 = priority.get()
 
-    Run(mode1, line0, line1, line2, PosStation, satelliteindex, indexvector, priorityvector, loopdays, loophours, loopminutes, minback1)
+    Run(mode1, line0, line1, line2, PosStation, satelliteindex, indexvector, priorityvector, priority1, loopdays, loophours, loopminutes, minback1, info)
     #plot
     return
 

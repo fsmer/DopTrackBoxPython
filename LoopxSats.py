@@ -10,7 +10,7 @@ def LoopxSats(mode, line0, line1,line2,Rstation,index, indexvector, loopdays, lo
 
 
     #create time vector from -2 hour to 2 hour                #add run time
-    year, month, day, hour, minute, second, regionaltime = Choosetime(loopdays, loophours, loopminutes, minback)
+    time1, year, month, day, hour, minute, second, regionaltime = Choosetime(loopdays, loophours, loopminutes, minback)
     #isolate 
     indexer = []
     cartesianvector = []
