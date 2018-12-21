@@ -7,10 +7,14 @@ def LoopxSats(mode, line0, line1,line2,Rstation,index, indexvector, loopdays, lo
     
     
     
-
+    #in order to plot backward we add a minutes back this should not be used in the output I guess but only in the forward. 
 
     #create time vector from -2 hour to 2 hour                #add run time
+    minback = 120
     year, month, day, hour, minute, second, regionaltime = Choosetime(loopdays, loophours, loopminutes, minback)
+
+    samplesback = minback
+    
     #isolate 
     indexer = []
     cartesianvector = []
@@ -59,6 +63,7 @@ def LoopxSats(mode, line0, line1,line2,Rstation,index, indexvector, loopdays, lo
             timevector.append(time)
 
         # print(inviewvector)
+        # all of them are now in dubble brackets which is not needed can be removed but then also has to be remove din the next files
         xelevationvector.append([elevationvector])
         xazimuthvector.append([azimuthvector])
         xinviewvector.append(inviewvector)
@@ -81,11 +86,11 @@ def LoopxSats(mode, line0, line1,line2,Rstation,index, indexvector, loopdays, lo
     
 
     #make txt file
-    maketxtfile(xinviewvector,line0,xelevationvector,xazimuthvector,mode, indexer, xtimevector)
+    maketxtfile(xinviewvector,line0,xelevationvector,xazimuthvector,mode, indexer, xtimevector, samplesback)
     #make yml file
     # makeyamlfile()
     #plot all sats on map
-    # PlotOnMap(latitudevector, longitudevector, timevector, inviewvector,PosStation)
+    PlotOnMap(xlatitudevector, xlongitudevector, xtimevector, xinviewvector, PosStation, minback, mode)
     print("done")
     #plot view of sky
     #plotinsight()
