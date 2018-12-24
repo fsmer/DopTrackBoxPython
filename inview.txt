@@ -1,0 +1,3 @@
+SatelliteDELFI-C3 (DO-64)        
+Start time			||		End time			|| Maximum elevation || Start azimuth || End azimuth
+-----------------------------------------------------------------------------------------

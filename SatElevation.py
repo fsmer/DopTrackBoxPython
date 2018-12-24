@@ -6,14 +6,20 @@ def SatElevation(station , sat):
     P = sat
     S = station
 
-    O = P-S
-    normP = np.linalg.norm(P)
-    normS = np.linalg.norm(S)
 
-    OSdefOS = O.dot(S)/(normP*normS)
+    O = P-S
+
+    normS = np.linalg.norm(S)
+    normO = np.linalg.norm(O)
+
+   
+    OSdefOS = O.dot(S)/(normS*normO)
 
     omega = np.arccos(OSdefOS)
-    elev = omega*180/np.pi-90
+ 
+    elev =  (omega*180/np.pi - 90)*-1
+   
     azi = 0
-    
+
+
     return (elev, azi)

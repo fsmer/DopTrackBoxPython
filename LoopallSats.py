@@ -1,8 +1,10 @@
-def LoopallSats(mode, line0, line1, line2, Rstation, PosStation):
+
+def LoopallSats(mode, line0, line1, line2, Rstation, PosStation, satelliteindex):
     from SGP4 import SGP4
     from Continue import Continue
     from Choosetime import Choosetime
     from PlotOnMap import PlotOnMap
+
     #create time vector (1 time value)
     time1, year, month, day, hour, minute, second, regionaltime = Choosetime(0, 0, 1, 0)
 
@@ -31,11 +33,14 @@ def LoopallSats(mode, line0, line1, line2, Rstation, PosStation):
         j +=1
 
     #make txt file
-    #maketxtfile()
+
+    maketxtfile(inviewvector,line0,elevationvector,azimuthvector,mode, 0, timevector)
     #make yml file
     # makeyamlfile()
     #plot all sats on map
-    PlotOnMap(latitudevector, longitudevector, line0, inviewvector,PosStation)
+    PlotOnMap(latitudevector, longitudevector, timevector, inviewvector,PosStation)
     print("done")
     #plot view of sky
     #plotinsight
+    return
+

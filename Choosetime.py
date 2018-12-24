@@ -9,6 +9,7 @@ def Choosetime(loopdays, loophours, loopminutes, negativeminutes):
     localtime0 = datetime.now() + timedelta(minutes = -negativeminutes)
     #print(time)
     time1 = []
+
     localtime = []
     year = []
     month = []
@@ -22,6 +23,7 @@ def Choosetime(loopdays, loophours, loopminutes, negativeminutes):
     #Loop
     addedminutes = loopdays*24*60+loophours*60+loopminutes
     for j in range (-negativeminutes, addedminutes):
+
           time1.append(time)
           year.append(time.year)
           month.append(time.month)
@@ -36,6 +38,5 @@ def Choosetime(loopdays, loophours, loopminutes, negativeminutes):
           j +=1
 
     #print(minute)
-    #
 
     return(time1, year, month, day, hour, minute, second, localtime) 
