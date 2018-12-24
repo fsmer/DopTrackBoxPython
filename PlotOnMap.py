@@ -1,4 +1,6 @@
+
 def PlotOnMap(Latvector,Lonvector, time, insight, station, minback, mode):
+
     import matplotlib.pyplot as plt
     import numpy as np
     import datetime
@@ -13,15 +15,16 @@ def PlotOnMap(Latvector,Lonvector, time, insight, station, minback, mode):
     ax.set_aspect(1)
 
 
+
     print(Lonvector[0][0][0])
     plt.plot(Lonvector[0][0], Latvector[0][0], 'b.') 
     plt.plot(station[0],station[1],'r+')
     plt.plot(Lonvector[0][0][minback], Latvector[0][0][minback],'rx')
+
     plt.xlabel('Lontitude')
     plt.ylabel('Latitude')
     plt.title('Satellite or groundtrack plot')
 
-  
 
 
     fig2, ax2 = plt.subplots()

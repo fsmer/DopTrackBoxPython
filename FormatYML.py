@@ -1,94 +1,40 @@
 
-#how to do the time?
-x = 5
-y = 'funcube'
-file = open('testfile.yml', 'w')
-file.write('Sat:')
+def FormatYML(Eazimuth, Elevation, Length, Sazimuth, timeUTC,  timezone, line1, line2, start, numsample, samplerate, time1, time2, time3, antenna, ID, name, priority, freq, stat1, stat2, stat3, stat4): 
 
-file.write("\n \t \t")
-file.write('Predict: %d' %x)
+    yml = 'Sat: \n\tPredict: \n' 
+    yml = yml+ '\t\tEazimuth: '+  str(Eazimuth) + '\n'
+    yml = yml+ '\t\tElevation: ' + str(Elevation) + '\n'
+    yml = yml+ '\t\tLength of pass: ' + str(Length) + '\n'
+    yml = yml+ '\t\tSazimuth: ' + str(Sazimuth) + '\n'
+    yml = yml+ '\t\ttime Used UTC: ' + str(timeUTC) + '\n'
+    yml = yml+ '\t\ttimezone used: ' + str(timezone) + '\n'
+    yml = yml+ '\t\tused TLE line1: ' + str(line1) + '\n'
+    yml = yml+ '\t\tused TLE line2: ' + str(line2) + '\n'
+    
+    yml = yml+ '\tRecord: \n'
+    yml = yml+ '\t\tStart of recording: ' + str(start) + '\n'
+    yml = yml+ '\t\tnum_sample: ' + str(numsample) + '\n'
+    yml = yml+ '\t\tsample_rate: ' + str(samplerate) + '\n'
+    yml = yml+ '\t\ttime1 UTC: ' + str(time1) + '\n'
+    yml = yml+ '\t\ttime2 UTC: ' + str(time2) + '\n'
+    yml = yml+ '\t\ttime3 LT: ' + str(time3) + '\n'
 
-file.write("\n \t \t")
-file.write('EAzimuth: %d' %x)
+    yml = yml+ '\tState: \n'
+    yml = yml+ '\t\tAntenna: ' + str(antenna) + '\n'
+    yml = yml+ '\t\tNORADID: ' + str(ID) + '\n'
+    yml = yml+ '\t\tName: ' + str(name) + '\n'
+    yml = yml+ '\t\tPriority: ' + str(priority) + '\n'
+    yml = yml+ '\t\tTuning Frequency: ' + str(freq) + '\n'
 
-file.write("\n \t \t")
-file.write('Elevation: %d' %x)
-
-file.write("\n \t \t")
-file.write('Length of pass: %d' %x)
-
-file.write("\n \t \t")
-file.write('SAzimuth: %d' %x)
-
-file.write("\n \t \t")
-file.write('time used UTC: %d' %x)
-
-file.write("\n \t \t")
-file.write('timezone used: %d' %x)
-
-file.write("\n \t \t")
-file.write('used TLE line1: %d' %x)
-
-file.write("\n \t \t")
-file.write('used TLE line2: %d' %x)
-
-file.write("\n \t")
-file.write('Record:')
+    yml = yml+ '\tStation: \n'
+    yml = yml+ '\t\tHeight: ' + str(stat1) + '\n'
+    yml = yml+ '\t\tLat: ' + str(stat2) + '\n'
+    yml = yml+ '\t\tLon: ' + str(stat3) + '\n'
+    yml = yml+ '\t\tName: ' + str(stat4) + '\n'
 
 
-file.write("\n \t \t")
-file.write('Start of recording: %d' %x)
+    #print(yml)
 
-file.write("\n \t \t")
-file.write('num_sample: %d' %x)
-
-file.write("\n \t \t")
-file.write('sample_rate: %d' %x)
-
-file.write("\n \t \t")
-file.write('time1 UTC: %d' %x)
-
-file.write("\n \t \t")
-file.write('time2 UTC: %d' %x)
-
-file.write("\n \t \t")
-file.write('time3 LT: %d' %x)
-
-
-file.write("\n \t")
-file.write('State:')
-
-file.write("\n \t \t")
-file.write('Antenna: %d' %x)
-
-file.write("\n \t \t")
-file.write('NORADID: %d' %x)
-
-file.write("\n \t \t")
-file.write('Name: %d' %x)
-
-file.write("\n \t \t")
-file.write('Priority: %d' %x)
-
-file.write("\n \t \t")
-file.write('Tuning Frequency: %d' %x)
-
-
-file.write("\n \t")
-file.write('Station:')
-
-file.write("\n \t \t")
-file.write('Height: %d' %x)
-
-file.write("\n \t \t")
-file.write('Lat: %d' %x)
-
-file.write("\n \t \t")
-file.write('Lon: %d' %x)
-
-file.write("\n \t \t")
-file.write('Name: %s' %y)
-
-file.close()
+    return(yml)
 
 
