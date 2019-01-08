@@ -56,30 +56,36 @@ def maketxtfile(inviewvector,line0,elevationvector,azimuthvector,mode, indexer, 
             runlen = len(inviewvector[0])
             # print(runlen)
             inviewvector[k][0]= False
+            inviewvector[k][samplesback]= False
             inviewvector[k][(runlen-2)] = False
             inviewvector[k][(runlen-1)] = False
             maxelevation = 0
+            startazimuth = 0
       
             for i in range(samplesback, runlen-2):
                 # print(i)
                 # print(elevationvector[0][0][i])
-                if elevationvector[k][0][i] > maxelevation:
-                    maxelevation = elevationvector[k][0][i]
+                if elevationvector[k][i] > maxelevation:
+                    maxelevation = elevationvector[k][i]
 
 
-                if (inviewvector[k][i] == False) & (inviewvector[k][i+1] == True):
-                    file.write('%s'"-"'%s'"-"'%s' " " '%s'":"'%s'":"'%s' %(timevector[k][0][i+1])) 
+                if ((inviewvector[k][i] == False) and (inviewvector[k][i+1] == True)):
+                    file.write('%s'"-"'%s'"-"'%s' " " '%s'":"'%s'":"'%s' %(timevector[k][i+1])) 
+                    if (((timevector[k][i][3] < 10) and (timevector[k][i][4] < 10) ) or ((timevector[k][i][4] < 10) and (timevector[k][i][5] < 10)) or ((timevector[k][i][3] < 10) and (timevector[k][i][5] < 10))):
+                        file.write("\t")
                     file.write("\t" "\t")
-                    startazimuth = azimuthvector[k][0][i+1]
+                    startazimuth = azimuthvector[k][i+1]
 
-                elif (inviewvector[k][i] == True) & (inviewvector[k][i+1] == False):
-                    file.write('%s'"-"'%s'"-"'%s' " " '%s'":"'%s'":"'%s'  %(timevector[k][0][i]))
+                elif ((inviewvector[k][i] == True) and (inviewvector[k][i+1] == False)):
+                    file.write('%s'"-"'%s'"-"'%s' " " '%s'":"'%s'":"'%s'  %(timevector[k][i]))
+                    if (((timevector[k][i][3] < 10) and (timevector[k][i][4] < 10) ) or ((timevector[k][i][4] < 10) and (timevector[k][i][5] < 10)) or ((timevector[k][i][3] < 10) and (timevector[k][i][5] < 10))):
+                        file.write("\t")
                     file.write("\t" "\t"   )
                     file.write('%d' %(maxelevation))
                     file.write("\t"  "\t" "\t" )
                     file.write('%d' %(startazimuth))
                     file.write("\t""\t" "\t" )
-                    file.write('%d' %(azimuthvector[k][0][i]))
+                    file.write('%d' %(azimuthvector[k][i]))
                     file.write("\n")
                     file.write("\n")
                     maxelevation = 0
