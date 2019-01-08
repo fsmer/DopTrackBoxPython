@@ -34,11 +34,12 @@ def LoopallSats(mode, line0, line1,line2,Rstation, PosStation, satelliteindex):
 
     #make txt file
 
-    maketxtfile(inviewvector,line0,elevationvector,azimuthvector,mode, 0, timevector,0)
+    maketxtfile(inviewvector,line0,elevationvector,azimuthvector,mode, 0, timevector, 0)
+    
     #make yml file
     # makeyamlfile()
     #plot all sats on map
-    PlotOnMap(latitudevector, longitudevector, timevector, inviewvector,PosStation,0,0)
+    # PlotOnMap(latitudevector, longitudevector, timevector, inviewvector, PosStation, 0, mode)
     print("done")
     #plot view of sky
     #plotinsight
