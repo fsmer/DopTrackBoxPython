@@ -52,5 +52,3 @@ def Continue(Rsat, time, Rstation):
     #print('elev, azi',elevation,azimuth)
     #return insight, latitude, longitude, elevation, azimuth
     return (inview, latitude, longitude, elevation, azimuth)
-
-

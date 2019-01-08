@@ -9,6 +9,7 @@ from DownloadTLE import DownloadTLE
 from ReadTLE import ReadTLE
 from readcustom import readcustom
 from Run import Run
+from testPlotMap import testPlotMap
 
 
 
@@ -22,6 +23,9 @@ locvector, lonvector, latvector, hvector, line0, line1, line2, info = readcustom
 namevector = []
 indexvector = []
 priorityvector = []
+
+
+
 
 
    
@@ -51,8 +55,9 @@ def recalc():
     loopminutes = int(minutes.get())
     minback1 = int(minback.get())
     PosStation = [stationlon1, stationlat1, hstation1]
+    priority1 = priority.get()
 
-    Run(mode1, line0, line1, line2, PosStation, satelliteindex, indexvector, priorityvector, loopdays, loophours, loopminutes, minback1)
+    Run(mode1, line0, line1, line2, PosStation, satelliteindex, indexvector, priorityvector, priority1, loopdays, loophours, loopminutes, minback1, info)
     #plot
     return
 
@@ -157,7 +162,16 @@ def addsatellite():
     addinfo = ''.join(addinfo)
     T.insert(END, addinfo)
     print(namevector, indexvector, priorityvector)
+    return()
+
+def delsatellite():
+    T.delete(0/1, END)
+    priorityvector.clear()
+    namevector.clear()
+    indexvector.clear()
     return
+    
+
 
 
 
@@ -280,6 +294,11 @@ button = tk.Button(frame1,
                    text="ADD Satellite", 
                    command=addsatellite)
 button.grid(row = 1, column = 5, sticky = NW)
+
+button = tk.Button(frame1, 
+                   text="DELETE Satellites", 
+                   command=delsatellite)
+button.grid(row = 1, column = 6, sticky = NW)
 
 # create a Text widget
 T = tk.Text(frame1, height = 15, width = 43)
@@ -411,3 +430,4 @@ filehelp.close
 
 
 root.mainloop()
+

@@ -7,7 +7,6 @@ def SatElevation(station , sat):
     S = station
 
 
-
     O = P-S
 
     normS = np.linalg.norm(S)
@@ -21,5 +20,6 @@ def SatElevation(station , sat):
     elev =  (omega*180/np.pi - 90)*-1
    
     azi = 0
+
 
     return (elev, azi)
