@@ -1,6 +1,6 @@
 def maketxtfile(inviewvector,line0,elevationvector,azimuthvector,mode, indexer, timevector, samplesback):
     import os
-
+    import webbrowser
     if os.path.isfile("inview.txt"):
         os.remove("inview.txt")
 
@@ -13,32 +13,32 @@ def maketxtfile(inviewvector,line0,elevationvector,azimuthvector,mode, indexer, 
         
         file.write("Inview Now")
         file.write("\n")
-        file.write("---------------------------------------------------")
+        file.write("--------------------------------------------------------------------")
         file.write("\n")
-        file.write("Satellite" "\t" "\t" "\t" "\t" "\t" "||" " " "Elevation"" ""||" " ""Azimuth" "\n" )
+        file.write("Satellite" "\t" "\t" "\t" "\t"   "Elevation" "\t" "Azimuth" "\n" )
         file.write("\n")
         for i in range(0,length):
             if inviewvector[i] ==True:
                 file.write(line0[i])
                 file.write("\t" "\t" )
                 file.write('%d' %(elevationvector[i]))
-                file.write("\t" "\t" "\t")
+                file.write("\t" "\t" )
                 file.write('%d' %(azimuthvector[i]))
                 file.write("\n")
         file.write("\n")
         file.write("\n")
         file.write("Not inview")
         file.write("\n")
-        file.write("---------------------------------------------------")
+        file.write("--------------------------------------------------------------------")
         file.write("\n")
-        file.write("Satellite" "\t" "\t" "\t" "\t" "\t""||" " " "Elevation"" ""||" " ""Azimuth" "\n" )
+        file.write("Satellite" "\t" "\t" "\t" "\t"  "Elevation""\t" "Azimuth" "\n" )
         file.write("\n")
         for j in range(0,length):
             if inviewvector[j] ==False:
                 file.write(line0[j])
                 file.write("\t" "\t" )
                 file.write('%d' %(elevationvector[j]))
-                file.write("\t" "\t" "\t")
+                file.write("\t" "\t" )
                 file.write('%d' %(azimuthvector[j]))
                 file.write("\n")
     
@@ -48,7 +48,7 @@ def maketxtfile(inviewvector,line0,elevationvector,azimuthvector,mode, indexer, 
 
             file.write("Satellite" '%s' %(line0[indexer[k]]))
             file.write("\n")
-            file.write("Start time" "\t" "\t" "\t" "||""\t" "\t" "End time" "\t" "\t" "\t" "||"" " "Maximum elevation"" " "||" " ""Start azimuth" " ""||" " ""End azimuth" "\n")
+            file.write("Start time" "\t" "\t"  "\t" "End time" "\t" "\t"  "\t" "Maximum elevation" "\t"   "Start azimuth""\t"  "\t""End azimuth" "\n")
 
             # print("first loop")
             # print(elevationvector[k][0][0])
@@ -74,18 +74,23 @@ def maketxtfile(inviewvector,line0,elevationvector,azimuthvector,mode, indexer, 
 
                 elif (inviewvector[k][i] == True) & (inviewvector[k][i+1] == False):
                     file.write('%s'"-"'%s'"-"'%s' " " '%s'":"'%s'":"'%s'  %(timevector[k][0][i]))
-                    file.write("\t" "\t" "\t" "\t" )
+                    file.write("\t" "\t"   )
                     file.write('%d' %(maxelevation))
-                    file.write("\t" "\t" "\t" "\t" "\t")
+                    file.write("\t"  "\t" "\t" )
                     file.write('%d' %(startazimuth))
-                    file.write("\t" "\t" "\t" "\t")
+                    file.write("\t""\t" "\t" )
                     file.write('%d' %(azimuthvector[k][0][i]))
                     file.write("\n")
                     file.write("\n")
                     maxelevation = 0
 
-            file.write("-------------------------------------------------------------------------------------------------------")
+            file.write("------------------------------------------------------------------------------------------------------------------------")
             file.write("\n")
 
     file.close()
+
+    webbrowser.open("inview.txt")
+
+    
+
     return 
