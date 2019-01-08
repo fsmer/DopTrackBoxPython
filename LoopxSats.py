@@ -65,12 +65,12 @@ def LoopxSats(mode, line0, line1,line2,Rstation,index, indexvector, loopdays, lo
 
         # print(inviewvector)
         # all of them are now in dubble brackets which is not needed can be removed but then also has to be remove din the next files
-        xelevationvector.append([elevationvector])
-        xazimuthvector.append([azimuthvector])
+        xelevationvector.append(elevationvector)
+        xazimuthvector.append(azimuthvector)
         xinviewvector.append(inviewvector)
-        xlatitudevector.append([latitudevector])
-        xlongitudevector.append([longitudevector])
-        xtimevector.append([timevector])
+        xlatitudevector.append(latitudevector)
+        xlongitudevector.append(longitudevector)
+        xtimevector.append(timevector)
         
 
         cartesianvector = []

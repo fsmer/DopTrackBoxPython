@@ -412,7 +412,7 @@ locationbox = ttk.Combobox(frame2, values= locvector)
 locationbox.grid(row = 1, column = 1)
 locationbox.current(0) #set default value
 
-########################################################################Help
+########################################################################
 # create a Text widget
 Thelp = tk.Text(frame3)
 Thelp.config(font=("consolas", 12), undo=True, wrap='word')
