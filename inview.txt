@@ -1,19 +1,201 @@
-SatelliteSINAH 1                 
-Start time			End time			Maximum elevation	Start azimuth		End azimuth
-2019-1-8 15:16:26		2019-1-8 15:18:26		16			0			0
+Inview Now
+--------------------------------------------------------------------
+Satellite				Elevation	Azimuth
 
-2019-1-8 16:43:26		2019-1-8 16:54:26		19			0			0
+JAS-2 (FO-29)           		19		0
+NOAA 19                 		7		0
+LARES                   		40		0
+GONETS-M 4              		7		0
+BEESAT-3                		0		0
+NEE-02 KRYSAOR          		30		0
+FUNCUBE-1 (AO-73)       		11		0
+UWE-3                   		60		0
+KAITUO 1B               		25		0
+CAS-2T & KS-1Q          		17		0
+CHANGSHAGAOXIN (TY 4-01)		40		0
+ES'HAIL 2               		26		0
 
-2019-1-8 18:22:26		2019-1-8 18:26:26		2			0			0
 
-2019-1-8 23:5:26		2019-1-8 23:10:26		2			0			0
+Not inview
+--------------------------------------------------------------------
+Satellite				Elevation	Azimuth
 
-2019-1-9 0:38:26		2019-1-9 0:49:26		21			0			0
-
-2019-1-9 2:14:26		2019-1-9 2:27:26		62			0			0
-
-2019-1-9 3:55:26		2019-1-9 4:4:26			9			0			0
-
-2019-1-9 14:6:26		2019-1-9 14:18:26		21			0			0
-
-------------------------------------------------------------------------------------------------------------------------
+UOSAT 2 (UO-11)         		-34		0
+LUSAT (LO-19)           		-31		0
+ITAMSAT                 		-52		0
+RADIO ROSTO (RS-15)     		-7		0
+NOAA 15                 		-11		0
+TECHSAT 1B (GO-32)      		-39		0
+ISS (ZARYA)             		-28		0
+PCSAT (NO-44)           		-67		0
+SAUDISAT 1C (SO-50)     		-7		0
+CUTE-1 (CO-55)          		-42		0
+CUBESAT XI-IV (CO-57)   		-86		0
+MOZHAYETS 4 (RS-22)     		-21		0
+NOAA 18                 		-65		0
+SINAH 1                 		-61		0
+CUBESAT XI 5            		0		0
+FALCONSAT-3             		-21		0
+CUTE-1.7+APD II (CO-65) 		-7		0
+AAUSAT-II               		-66		0
+DELFI-C3 (DO-64)        		-63		0
+SEEDS II (CO-66)        		-31		0
+YUBILEINY (RS-30)       		-78		0
+STARS (KUKAI)           		-40		0
+KKS-1 (KISEKI)          		-60		0
+METEOR-M 1              		-85		0
+SWISSCUBE               		-73		0
+BEESAT                  		-69		0
+ITUPSAT 1               		-10		0
+TISAT 1                 		-79		0
+RASAT                   		-47		0
+JUGNU                   		-58		0
+SRMSAT                  		-52		0
+M-CUBED & EXP-1 PRIME   		-48		0
+STRAND-1                		-13		0
+SOMP                    		-73		0
+BEESAT-2                		-55		0
+NEE-01 PEGASUS          		-56		0
+ESTCUBE 1               		-52		0
+ZACUBE-1 (TSHEPISOSAT)  		-62		0
+OPTOS                   		-8		0
+WNISAT-1                		-67		0
+TRITON-1                		-60		0
+DOVE 3                  		-49		0
+GOMX 1                  		-55		0
+FIRST-MOVE              		-67		0
+CUBEBUG-2 (LO-74)       		-18		0
+UNIFORM 1               		-18		0
+SOCRATES                		-66		0
+RISING 2                		-31		0
+SPROUT                  		-69		0
+UNISAT-6                		-9		0
+BUGSAT-1 (TITA)         		-67		0
+SAUDISAT 4              		-69		0
+DUCHIFAT-1              		-61		0
+NANOSATC-BR1            		-42		0
+DTUSAT-2                		-64		0
+PERSEUS-M2              		-37		0
+PERSEUS-M1              		-56		0
+POLYITAN-1              		-44		0
+TIGRISAT                		-54		0
+METEOR-M 2              		-32		0
+DX1                     		-10		0
+UKUBE-1                 		-78		0
+HODOYOSHI-1             		-63		0
+FIREBIRD 3              		-68		0
+FIREBIRD 4              		-49		0
+GRIFEX                  		-15		0
+EXOCUBE                 		-59		0
+NUDT-PHONESAT           		-2		0
+XW-2A                   		-53		0
+XW-2C                   		-43		0
+XW-2D                   		-33		0
+LILACSAT 2              		-31		0
+XW-2F                   		-25		0
+XW-2B                   		-72		0
+TIANWANG 1C (TW-1C)     		-43		0
+TIANWANG 1A (TW-1A)     		-45		0
+LAPAN-A2                		-59		0
+ATHENOXAT 1             		-70		0
+GALASSIA                		-14		0
+VELOX 2                 		-68		0
+HORYU-IV                		-41		0
+E-ST@R-II               		-3		0
+AAUSAT 4                		-75		0
+AIST-2D (RS-48)         		-17		0
+NUSAT-1 (FRESCO)        		-52		0
+NUSAT-2 (BATATA)        		-47		0
+LAPAN-A3                		-72		0
+BIROS                   		-42		0
+SWAYAM                  		-75		0
+BEESAT-4                		-1		0
+ALSAT 1N                		-11		0
+PINA 2B                 		-74		0
+KAIDUN 1                		-4		0
+NAYIF-1 (EO-88)         		-66		0
+HAVELSAT                		-69		0
+CXBN-2                  		-33		0
+PHOENIX                 		-21		0
+X-CUBESAT               		-28		0
+QBEE50-LTU-OC           		-16		0
+ZA-AEROSAT              		-63		0
+SPACECUBE               		-51		0
+NJUST-1                 		-57		0
+LILACSAT-1              		-61		0
+NSIGHT-1                		-29		0
+SNUSAT-1                		-29		0
+POLYITAN-2-SAU          		-10		0
+SNUSAT-1B               		-66		0
+ZHUHAI-1 02 (CAS 4B)    		-25		0
+ZHUHAI-1 01 (CAS 4A)    		-65		0
+NIUSAT                  		-52		0
+LITUANICASAT-2          		-53		0
+AALTO-1                 		-78		0
+URSA MAIOR              		-17		0
+MAX VALIER SAT          		-77		0
+SUCHAI                  		-76		0
+SKCUBE                  		-73		0
+VZLUSAT-1               		-12		0
+ROBUSTA-1B              		-39		0
+TOKI                    		-72		0
+MAZAALAI (NUMSAT-1)     		-12		0
+BRAC ONNESHA            		-72		0
+NIGERIAEDUSAT-1         		-59		0
+MAKERSAT 0              		-52		0
+RADFXSAT (FOX-1B)       		-18		0
+INS-1C                  		-20		0
+2018-004Y               		-3		0
+2018-004AA              		-39		0
+FOX-1D (AO-92)          		-64		0
+XIAOXIANG-2             		-24		0
+ZHOU ENLAI              		-7		0
+FENGMANIU-1 (FMN-1)     		-4		0
+GOMX4-A                 		-69		0
+SHAONIAN XING           		-23		0
+1KUNS-PF                		-50		0
+BATSU-CS1 (IRAZU)       		-32		0
+EQUISAT                 		-35		0
+UITMSAT-1               		-46		0
+MAYA-1                  		-50		0
+BHUTAN-1                		-54		0
+SIRIUSSAT-1             		-49		0
+SIRIUSSAT-2             		-57		0
+TANUSHA-3               		-33		0
+SURFSAT                 		-19		0
+CP-7 (DAVE)             		-19		0
+ELFIN-B                 		-20		0
+ELFIN-A                 		-25		0
+1998-067PN              		-28		0
+CUBEBEL-1 (BSUSAT-1)    		-87		0
+TEN-KOH                 		-21		0
+DIWATA 2B               		-20		0
+IRVINE01                		-67		0
+FACSAT-1                		-69		0
+REAKTOR HELLO WORLD     		-42		0
+EXCITE                  		-60		0
+2018-099C               		-73		0
+AISTECHSAT 2            		-57		0
+FOX-1CLIFF (AO-95)      		-69		0
+RANGE-A                 		-72		0
+RANGE-B                 		-72		0
+MOVE II                 		-76		0
+2018-099Z               		-76		0
+SNUSAT-2                		-75		0
+2018-099AC              		-73		0
+ITASAT 1                		-72		0
+2018-099AF              		-72		0
+EAGLET-I                		-51		0
+ESEO                    		-49		0
+CSIM-FD                 		-47		0
+ASTROCAST 0.1           		-36		0
+JY1SAT (JO-97)          		-67		0
+SUOMI-100               		-67		0
+AL-FARABI 2             		-66		0
+2018-099BB              		-61		0
+PW-SAT2                 		-76		0
+CHOMPTT                 		-37		0
+2018-104H               		-48		0
+2018-111D               		-18		0
+UWE-4                   		-20		0
+2018-111F               		-21		0
