@@ -11,7 +11,8 @@ def LoopxSats(mode, line0, line1,line2,Rstation,index, indexvector, loopdays, lo
     #in order to plot backward we add a minutes back this should not be used in the output I guess but only in the forward. 
 
     #create time vector from -2 hour to 2 hour                #add run time
-    minback = 120
+    if minback < 10:
+        minback = 10
     time1, year, month, day, hour, minute, second, regionaltime = Choosetime(loopdays, loophours, loopminutes, minback)
 
     samplesback = minback
@@ -91,7 +92,7 @@ def LoopxSats(mode, line0, line1,line2,Rstation,index, indexvector, loopdays, lo
     #make yml file
     # makeyamlfile()
     #plot all sats on map
-    # PlotOnMap(xlatitudevector, xlongitudevector, xtimevector, xinviewvector, PosStation, minback, mode)
+    PlotOnMap(xlatitudevector, xlongitudevector, xtimevector, xinviewvector, PosStation, samplesback, mode, index, line0, indexer)
     print("done")
     #plot view of sky
     #plotinsight()
