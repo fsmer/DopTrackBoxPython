@@ -1,4 +1,3 @@
-
 def LoopallSats(mode, line0, line1,line2,Rstation, PosStation, satelliteindex):
     from SGP4 import SGP4
     from Continue import Continue
@@ -6,6 +5,7 @@ def LoopallSats(mode, line0, line1,line2,Rstation, PosStation, satelliteindex):
     from PlotOnMap import PlotOnMap
     from maketxtfile import maketxtfile
     #create time vector (1 time value)
+    import psutil
     time1, year, month, day, hour, minute, second, regionaltime = Choosetime(0, 0, 1, 0)
 
     cartesianvector = []
@@ -31,11 +31,15 @@ def LoopallSats(mode, line0, line1,line2,Rstation, PosStation, satelliteindex):
         longitudevector.append(longitude)
         timevector.append([time])
         j +=1
+        
+        
+        CPU = psutil.cpu_percent()
+        print('CPU usage = ', CPU)
 
     #make txt file
-
-    maketxtfile(inviewvector,line0,elevationvector,azimuthvector,mode, 0, timevector, 0)
     
+
+    maketxtfile(inviewvector,line0,elevationvector,azimuthvector, 0, satelliteindex, timevector, 0)
     #make yml file
     # makeyamlfile()
     #plot all sats on map

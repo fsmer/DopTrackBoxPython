@@ -1,4 +1,3 @@
-
 def PlotOnMap(Latvector,Lonvector, time, insight, station, minback, mode, satelliteindex, satellites, indexer):
 
     import matplotlib.pyplot as plt
@@ -123,4 +122,5 @@ def PlotOnMap(Latvector,Lonvector, time, insight, station, minback, mode, satell
     
     # plt.show(block=False)
     # print('hello')
+
     return

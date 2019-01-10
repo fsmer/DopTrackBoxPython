@@ -1,4 +1,3 @@
-
 def LoopxSats(mode, line0, line1,line2,Rstation,index, indexvector, loopdays, loophours, loopminutes, PosStation, minback):
     from SGP4 import SGP4
     from Continue import Continue
@@ -96,5 +95,3 @@ def LoopxSats(mode, line0, line1,line2,Rstation,index, indexvector, loopdays, lo
     print("done")
     #plot view of sky
     #plotinsight()
-
-    
