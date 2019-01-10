@@ -1,4 +1,2 @@
 Delft
 EWI
-NAME
-NAME

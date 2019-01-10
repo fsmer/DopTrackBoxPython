@@ -1,4 +1,3 @@
-
 def FormatYML(Eazimuth, Elevation, Length, Sazimuth, timeUTC,  timezone, line1, line2, start, numsample, samplerate, time1, time2, time3, antenna, ID, name, priority, freq, stat1, stat2, stat3, stat4): 
 
     yml = 'Sat: \n\tPredict: \n' 
@@ -36,5 +35,4 @@ def FormatYML(Eazimuth, Elevation, Length, Sazimuth, timeUTC,  timezone, line1, 
     #print(yml)
 
     return(yml)
-
 

@@ -4,19 +4,11 @@ def LoopxSats(mode, line0, line1,line2,Rstation,index, indexvector, loopdays, lo
     from Continue import Continue
     from Choosetime import Choosetime   
     from PlotOnMap import PlotOnMap
-    from maketxtfile import maketxtfile
-    
-    
-    
-    #in order to plot backward we add a minutes back this should not be used in the output I guess but only in the forward. 
-
+    import psutil
+ 
+   
     #create time vector from -2 hour to 2 hour                #add run time
-    if minback < 10:
-        minback = 10
     time1, year, month, day, hour, minute, second, regionaltime = Choosetime(loopdays, loophours, loopminutes, minback)
-
-    samplesback = minback
-    
     #isolate 
     indexer = []
     cartesianvector = []
@@ -26,26 +18,17 @@ def LoopxSats(mode, line0, line1,line2,Rstation,index, indexvector, loopdays, lo
     latitudevector = []
     longitudevector = []
     timevector = []
-    
-    xelevationvector = []
-    xazimuthvector = []
-    xinviewvector = []
-    xlatitudevector = []
-    xlongitudevector = []
-    xtimevector = []
+    CPUvector = []
 
     lenindexvector = len(indexvector)
+    if lenindexvector is 0:
+        indexer.append(index)
 
     if lenindexvector > 0:
         
-        for i in range(0,lenindexvector):
+        for i in range(0,lenindexvector-1):
             indexer.append(indexvector[i])
-
-    else:
-        indexer.append(index)
         
-    # indexer klopt nu niet
-    # print("indexer" '%s' %(indexer))
 
     for l in range(0,len(indexer)):
         j = indexer[l]
@@ -63,6 +46,11 @@ def LoopxSats(mode, line0, line1,line2,Rstation,index, indexvector, loopdays, lo
             latitudevector.append(latitude)
             longitudevector.append(longitude)
             timevector.append(time)
+            k +=1
+
+
+            CPU = psutil.cpu_percent()
+            print('CPU usage = ', CPU)
 
         # print(inviewvector)
         # all of them are now in dubble brackets which is not needed can be removed but then also has to be remove din the next files
@@ -83,16 +71,28 @@ def LoopxSats(mode, line0, line1,line2,Rstation,index, indexvector, loopdays, lo
         timevector = []
 
 
+            
 
+        cartesianvector.append(cartesianvector[l])
+        elevationvector.append(elevationvector[l])
+        azimuthvector.append(azimuthvector[l])
+        inviewvector.append(inviewvector[l])
+        latitudevector.append(latitudevector[l])
+        longitudevector.append(longitudevector[l])
+        timevector.append(timevector[l])
 
-    
+        
+
+      
 
     #make txt file
-    maketxtfile(xinviewvector,line0,xelevationvector,xazimuthvector,mode, indexer, xtimevector, samplesback)
+    #maketxtfile()
     #make yml file
     # makeyamlfile()
     #plot all sats on map
+
     PlotOnMap(xlatitudevector, xlongitudevector, xtimevector, xinviewvector, PosStation, samplesback, mode, index, line0, indexer)
+
     print("done")
     #plot view of sky
     #plotinsight()
