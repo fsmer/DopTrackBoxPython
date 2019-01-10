@@ -55,7 +55,7 @@ def PlotOnMap(Latvector,Lonvector, time, insight, station, minback, mode, satell
         #go 120 minutes back and 120 minutes forward
         #give the past a differnt color and maybe an arrow
         #plot from indexer
-
+        forward = minback #groundtrack propegation forward
         img = plt.imread("map.png")
         fig1, ax = plt.subplots()
         ax.imshow(img, extent=[-180, 180, -90, 90])
@@ -74,7 +74,7 @@ def PlotOnMap(Latvector,Lonvector, time, insight, station, minback, mode, satell
             if i >= len(colorlist)/2:
                 print('To many inputs for color scale')
                 
-            for j in range(0, minback*2):
+            for j in range(0, minback+forward):
                 if j < minback:
                     
                     plt.plot(Lonvector[i][j], Latvector[i][j], marker = '.', color = colorlist[2*i],zorder=2)
