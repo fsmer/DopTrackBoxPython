@@ -1,11 +1,16 @@
-def LoopallSats(mode, line0, line1, line2, Rstation, PosStation):
+def Live(mode, line0, line1,line2,Rstation, PosStation):
     from SGP4 import SGP4
     from Continue import Continue
     from Choosetime import Choosetime
-    from PlotOnMap import PlotOnMap
+    from datetime import datetime
     import psutil
     #create time vector (1 time value)
+
+    startcalctime= datetime.now()
+
     time1, year, month, day, hour, minute, second, regionaltime = Choosetime(0, 0, 1, 0)
+
+    
 
     cartesianvector = []
     elevationvector = []
@@ -14,6 +19,10 @@ def LoopallSats(mode, line0, line1, line2, Rstation, PosStation):
     latitudevector = []
     longitudevector = []
     timevector = []
+
+    latitudevector.clear()
+    longitudevector.clear()
+  
     #Recalculate SGP4 and Continue
     k = 0
     for j in range (0, len(line0)-1):
@@ -31,16 +40,15 @@ def LoopallSats(mode, line0, line1, line2, Rstation, PosStation):
         timevector.append([time])
         j +=1
 
-        CPU = psutil.cpu_percent()
-        print('CPU usage = ', CPU)
+        #CPU = psutil.cpu_percent()
+        #print('CPU usage = ', CPU)
 
-    #make txt file
-    #maketxtfile()
-    #make yml file
-    # makeyamlfile()
-    #plot all sats on map
-    PlotOnMap(latitudevector, longitudevector, line0, inviewvector,PosStation)
 
+
+    endcalctime = datetime.now()
+    calculatingtime = endcalctime - startcalctime
+    print('Time calculating = ', calculatingtime)
     print("done")
-    #plot view of sky
-    #plotinsight
+
+    return(latitudevector,longitudevector, time)
+

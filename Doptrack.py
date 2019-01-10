@@ -9,7 +9,7 @@ from DownloadTLE import DownloadTLE
 from ReadTLE import ReadTLE
 from readcustom import readcustom
 from Run import Run
-from testPlotMap import testPlotMap
+import psutil
 
 
 
@@ -23,6 +23,10 @@ locvector, lonvector, latvector, hvector, line0, line1, line2, info = readcustom
 namevector = []
 indexvector = []
 priorityvector = []
+
+#print CPU usage
+CPU = psutil.cpu_percent()
+print('CPU usage = ', CPU)
 
 
 
@@ -215,17 +219,17 @@ tk.Label(frame,
         text="Choose mode:",
         padx = 20).grid(row = 2, column = 0)
 tk.Radiobutton(frame, 
-              text="Loopallsats",
+              text="Loop all satellites",
               padx = 20, 
               variable=mode, 
               value=0).grid(row = 2, column = 1, sticky = W)
 tk.Radiobutton(frame, 
-              text="Loopxsat",
+              text="Loop x satellites",
               padx = 20, 
               variable=mode, 
               value=1).grid(row = 3, column = 1, sticky = W)
 tk.Radiobutton(frame, 
-              text="MakeYML",
+              text="Make YML files",
               padx = 20, 
               variable=mode, 
               value=2).grid(row = 4, column = 1, sticky = W)
@@ -430,4 +434,3 @@ filehelp.close
 
 
 root.mainloop()
-

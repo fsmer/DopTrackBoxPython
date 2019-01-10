@@ -8,6 +8,7 @@ def MakeYMLfiles(mode, line0, line1,line2,Rstation,index, indexvector, loopdays,
     import datetime
     import os 
     import shutil
+    import psutil
     #make yml files for all sattelites but with priority vector
     #select satellite (J) run until in sight store when in sight run until out of sight store when out of sight
     #append in index J
@@ -120,6 +121,11 @@ def MakeYMLfiles(mode, line0, line1,line2,Rstation,index, indexvector, loopdays,
                  file = open(filename, 'w')
                  file.write(yml)
                  file.close()
+
+                 CPU = psutil.cpu_percent()
+                 print('CPU usage = ', CPU)
+
+        
              
         
         
@@ -136,7 +142,7 @@ def MakeYMLfiles(mode, line0, line1,line2,Rstation,index, indexvector, loopdays,
         beginregional.clear()
         beginUTC.clear()
         endUTC.clear()
-        print(l)
+        #print(l)
 
     os.chdir(oldpath)
 
