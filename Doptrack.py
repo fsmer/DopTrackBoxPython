@@ -18,7 +18,7 @@ import psutil
 
 DownloadTLE()
 
-locvector, lonvector, latvector, hvector, line0, line1, line2, info = readcustom()
+locvector, lonvector, latvector, hvector, line0, line1, line2, info, ratevector = readcustom()
 
 namevector = []
 indexvector = []
@@ -50,18 +50,21 @@ def recalc():
     locationindex = locationbox.current()
     satelliteindex = satellitebox.current()
     satellitename = satellitebox.get()
+    minelevation1 = minelevation.get()
     stationlon1 = float(lonvector[locationindex])
     stationlat1 = float(latvector[locationindex])
+    stationname = str(locvector[locationindex])
+    stationrate = int(ratevector[locationindex])
     hstation1 = float(hvector[locationindex])
     mode1 = mode.get()
     loopdays = int(days.get())
     loophours = int(hours.get())
     loopminutes = int(minutes.get())
     minback1 = int(minback.get())
-    PosStation = [stationlon1, stationlat1, hstation1]
+    PosStation = [stationlon1, stationlat1, hstation1, stationname, stationrate]
     priority1 = priority.get()
 
-    Run(mode1, line0, line1, line2, PosStation, satelliteindex, indexvector, priorityvector, priority1, loopdays, loophours, loopminutes, minback1, info)
+    Run(mode1, line0, line1, line2, PosStation, satelliteindex, indexvector, priorityvector, priority1, loopdays, loophours, loopminutes, minback1, info, minelevation)
     #plot
     return
 
@@ -95,7 +98,56 @@ def addloc():
     fileh.write('\n')
     fileh.close
 
-    locvector, lonvector, latvector, hvector, line0, line1, line2, info  = readcustom()
+    #Samplerate
+    rate = srate.get()
+    filerate = open("filerate.txt", "a")
+    filerate.write(str(rate))
+    filerate.write('\n')
+    filerate.close
+
+    locvector, lonvector, latvector, hvector, line0, line1, line2, info, ratevector  = readcustom()
+    locationbox['values'] = locvector
+
+    return
+
+###############################################################Addlocation
+def delloc():
+    #Location name
+    locname = loc.get()
+    fileloc = open("fileloc.txt", "w")
+    fileloc.write(str(locname))
+    fileloc.write('\n')
+    fileloc.close
+
+    #Longitude
+    lon = stationlon.get()
+    filelon = open("filelon.txt", "w")
+    filelon.write(str(lon))
+    filelon.write('\n')
+    filelon.close
+
+    #Latitude
+    lat = stationlat.get()
+    filelat = open("filelat.txt", "w")
+    filelat.write(str(lat))
+    filelat.write('\n')
+    filelat.close
+
+    #Hstation
+    h = hstation.get()
+    fileh = open("fileh.txt", "w")
+    fileh.write(str(h))
+    fileh.write('\n')
+    fileh.close
+
+    #Samplerate
+    rate = srate.get()
+    filerate = open("filerate.txt", "w")
+    filerate.write(str(rate))
+    filerate.write('\n')
+    filerate.close
+
+    locvector, lonvector, latvector, hvector, line0, line1, line2, info, ratevector  = readcustom()
     locationbox['values'] = locvector
 
     return
@@ -130,7 +182,7 @@ def addTLE():
     filedownlink.write('\n')
     filedownlink.close
 
-    locvector, lonvector, latvector, hvector, line0, line1, line2, info = readcustom()
+    locvector, lonvector, latvector, hvector, line0, line1, line2, info, ratevector = readcustom()
     satellitebox['values'] = line0
 
     return 
@@ -229,7 +281,7 @@ tk.Radiobutton(frame,
               variable=mode, 
               value=1).grid(row = 3, column = 1, sticky = W)
 tk.Radiobutton(frame, 
-              text="Make YML files",
+              text="Make YML files, removes old files",
               padx = 20, 
               variable=mode, 
               value=2).grid(row = 4, column = 1, sticky = W)
@@ -272,6 +324,14 @@ tk.Label(frame,
 minback = tk.Entry(frame)
 minback.grid(row = 6, column = 7, sticky = W)
 minback.insert(tk.END,0) #set default value
+
+minelevation = tk.IntVar()
+tk.Label(frame, 
+        text="""Minimal Elevation:""",
+        padx = 20).grid(row = 7, column = 0, sticky = W)
+minelevation = tk.Entry(frame)
+minelevation.grid(row = 7, column = 1, sticky = W)
+minelevation.insert(tk.END,0) #set default value
 
 
 
@@ -394,6 +454,15 @@ hstation = tk.Entry(frame2)
 hstation.grid(row = 2, column = 5)
 hstation.insert(tk.END,0) #set default value
 
+#Choose height propagating
+srate = tk.IntVar()
+tk.Label(frame2, 
+        text="""Sample rate:""",
+        padx = 20).grid(row = 2, column = 6)
+srate = tk.Entry(frame2)
+srate.grid(row = 2, column = 7)
+srate.insert(tk.END,0) #set default value
+
 #Choose name
 loc = tk.IntVar()
 tk.Label(frame2, 
@@ -408,6 +477,15 @@ button = tk.Button(frame2,
                    command=addloc)
 button.grid(row = 3, column = 2)
 
+button = tk.Button(frame2, 
+                   text="DELETE Location", 
+                   command=delloc)
+button.grid(row = 3, column = 3)
+
+tk.Label(frame2, 
+        text="""WARNING: removes all locations except selected""",
+        padx = 20).grid(row = 3, column = 4)
+
 #Dropdown menu choosing a satellite
 tk.Label(frame2, 
         text="""Choose Location:""",
@@ -416,7 +494,7 @@ locationbox = ttk.Combobox(frame2, values= locvector)
 locationbox.grid(row = 1, column = 1)
 locationbox.current(0) #set default value
 
-########################################################################
+########################################################################Help
 # create a Text widget
 Thelp = tk.Text(frame3)
 Thelp.config(font=("consolas", 12), undo=True, wrap='word')

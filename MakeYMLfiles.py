@@ -5,6 +5,7 @@ def MakeYMLfiles(mode, line0, line1,line2,Rstation,index, indexvector, loopdays,
     from Choosetime import Choosetime   
     from PlotOnMap import PlotOnMap
     from FormatYML import FormatYML
+    from tzlocal import get_localzone
     import datetime
     import os 
     import shutil
@@ -111,11 +112,16 @@ def MakeYMLfiles(mode, line0, line1,line2,Rstation,index, indexvector, loopdays,
         if len(beginpassing) is not 0:
             for m in range(0, len(beginpassing)):
                  beginregional1 = beginregional[m]
-                 timezone = beginregional1.utcoffset()
+                 timezone = get_localzone()
                  beginregionaldate = [str(beginregional1.year), str(beginregional1.month), str(beginregional1.day), str(beginregional1.hour), str(beginregional1.minute)]
                  timedelta = (endUTC[m]-beginUTC[m]).total_seconds()
 
-                 yml = FormatYML(1, 2, timedelta, 4, 5, timezone, firstline, secondline, ''.join(beginregionaldate), 9, 10, beginUTC[m], endUTC[m], beginregional[m], 14, IDTLE, namesat, pio, freq, PosStation[2], PosStation[1], PosStation[0], 20)
+                 elevationpass = elevationvector[beginpassing[m]:endpassing[m]]
+                 maxelevation = max(elevationpass)
+
+                 numsample = timedelta*PosStation[4]
+
+                 yml = FormatYML(azimuthvector[endpassing[m]-1], maxelevation, timedelta, azimuthvector[beginpassing[m]], 'TIME USED UTC', timezone, firstline, secondline, ''.join(beginregionaldate), numsample, PosStation[4], beginUTC[m], endUTC[m], beginregional[m], 'ANTENNA', IDTLE, namesat, pio, freq, PosStation[2], PosStation[1], PosStation[0], PosStation[3])
 
                  filename = namesat.rstrip()+ '_' + IDTLE + '_' + ''.join(beginregionaldate) +'.yml'
                  file = open(filename, 'w')

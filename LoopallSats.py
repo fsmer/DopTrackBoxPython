@@ -22,7 +22,7 @@ def LoopallSats(mode, line0, line1,line2,Rstation, PosStation, satelliteindex):
         time = (year[k], month[k], day[k], hour[k], minute[k], second[k])
 
         cartesianvector.append(Carthesian)
-        inview, latitude, longitude, elevation, azimuth = Continue(Carthesian[0], time, Rstation)
+        inview, latitude, longitude, elevation, azimuth = Continue(Carthesian[0], time, Rstation, PosStation)
         
         elevationvector.append(elevation)
         azimuthvector.append(azimuth)

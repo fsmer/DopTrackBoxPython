@@ -46,7 +46,7 @@ def Recalculate(looptime, loopdays, loophours, loopminutes, satelliteindex, line
             Carthesian = (SGP4(line1[j], line2[j], year[k], month[k], day[k], hour[k], minute[k], second[k]))
             time = (year[k], month[k], day[k], hour[k], minute[k], second[k])
             cartesianvector.append(Carthesian)
-            inview, latitude, longitude, elevation, azimuth = Continue(Carthesian[0], time, Rstation)
+            inview, latitude, longitude, elevation, azimuth = Continue(Carthesian[0], time, Rstation, PosStation)
             elevationvector.append(elevation)
             azimuthvector.append(azimuth)
             inviewvector.append(inview)

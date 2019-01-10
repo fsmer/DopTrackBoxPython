@@ -34,6 +34,14 @@ def readcustom():
         hvector.append(str(hv1[i]).rstrip())
     fileh.close
     #print(hvector)
+
+    ratevector = []
+    filerate = open("filerate.txt", "r")
+    ratev1 = filerate.readlines()
+    for i in range (0, len(ratev1)):
+        ratevector.append(str(ratev1[i]).rstrip())
+    filerate.close
+    #print(hvector)
     try: 
         file0 = open("file0.txt", "r")
         added0 = file0.readlines()
@@ -62,6 +70,6 @@ def readcustom():
             info.append(str(addeddownlink[i]).rstrip())
         filedownlink.close
         #print(info)
-        return (locvector, lonvector, latvector, hvector, line0, line1, line2, info )
+        return (locvector, lonvector, latvector, hvector, line0, line1, line2, info, ratevector )
     except:
-        return (locvector, lonvector, latvector, hvector, line0, line1, line2, info )
+        return (locvector, lonvector, latvector, hvector, line0, line1, line2, info, ratevector )

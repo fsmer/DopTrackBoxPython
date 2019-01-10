@@ -55,7 +55,7 @@ def LoopxSats(mode, line0, line1,line2,Rstation,index, indexvector, loopdays, lo
 
             time = (year[k], month[k], day[k], hour[k], minute[k], second[k])
 
-            inview, latitude, longitude, elevation, azimuth = Continue(Carthesian[0], time, Rstation)
+            inview, latitude, longitude, elevation, azimuth = Continue(Carthesian[0], time, Rstation, PosStation)
             elevationvector.append(elevation)
             azimuthvector.append(azimuth)
             inviewvector.append(inview)
