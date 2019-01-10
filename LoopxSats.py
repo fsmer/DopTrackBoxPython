@@ -1,3 +1,4 @@
+
 def LoopxSats(mode, line0, line1,line2,Rstation,index, indexvector, loopdays, loophours, loopminutes, PosStation, minback):
     from SGP4 import SGP4
     from Continue import Continue
@@ -5,12 +6,7 @@ def LoopxSats(mode, line0, line1,line2,Rstation,index, indexvector, loopdays, lo
     from PlotOnMap import PlotOnMap
     import psutil
  
-    
-    
-    
-    
-
-
+   
     #create time vector from -2 hour to 2 hour                #add run time
     time1, year, month, day, hour, minute, second, regionaltime = Choosetime(loopdays, loophours, loopminutes, minback)
     #isolate 
@@ -52,8 +48,28 @@ def LoopxSats(mode, line0, line1,line2,Rstation,index, indexvector, loopdays, lo
             timevector.append(time)
             k +=1
 
+
             CPU = psutil.cpu_percent()
             print('CPU usage = ', CPU)
+
+        # print(inviewvector)
+        # all of them are now in dubble brackets which is not needed can be removed but then also has to be remove din the next files
+        xelevationvector.append(elevationvector)
+        xazimuthvector.append(azimuthvector)
+        xinviewvector.append(inviewvector)
+        xlatitudevector.append(latitudevector)
+        xlongitudevector.append(longitudevector)
+        xtimevector.append(timevector)
+        
+
+        cartesianvector = []
+        elevationvector = []
+        azimuthvector = []
+        inviewvector = []
+        latitudevector = []
+        longitudevector = []
+        timevector = []
+
 
             
 
@@ -74,11 +90,11 @@ def LoopxSats(mode, line0, line1,line2,Rstation,index, indexvector, loopdays, lo
     #make yml file
     # makeyamlfile()
     #plot all sats on map
-    PlotOnMap(latitudevector, longitudevector, timevector, inviewvector,PosStation)
+
+    PlotOnMap(xlatitudevector, xlongitudevector, xtimevector, xinviewvector, PosStation, samplesback, mode, index, line0, indexer)
+
     print("done")
     #plot view of sky
     #plotinsight()
 
     
-
-

@@ -1,10 +1,11 @@
-def LoopallSats(mode, line0, line1, line2, Rstation, PosStation):
+def LoopallSats(mode, line0, line1,line2,Rstation, PosStation, satelliteindex):
     from SGP4 import SGP4
     from Continue import Continue
     from Choosetime import Choosetime
     from PlotOnMap import PlotOnMap
-    import psutil
+    from maketxtfile import maketxtfile
     #create time vector (1 time value)
+    import psutil
     time1, year, month, day, hour, minute, second, regionaltime = Choosetime(0, 0, 1, 0)
 
     cartesianvector = []
@@ -16,7 +17,7 @@ def LoopallSats(mode, line0, line1, line2, Rstation, PosStation):
     timevector = []
     #Recalculate SGP4 and Continue
     k = 0
-    for j in range (0, len(line0)-1):
+    for j in range (0, len(line0)):
         Carthesian = (SGP4(line1[j], line2[j], year[k], month[k], day[k], hour[k], minute[k], second[k]))
         time = (year[k], month[k], day[k], hour[k], minute[k], second[k])
 
@@ -30,17 +31,22 @@ def LoopallSats(mode, line0, line1, line2, Rstation, PosStation):
         longitudevector.append(longitude)
         timevector.append([time])
         j +=1
-
+        
+        
         CPU = psutil.cpu_percent()
         print('CPU usage = ', CPU)
 
     #make txt file
-    #maketxtfile()
+    
+
+    maketxtfile(inviewvector,line0,elevationvector,azimuthvector,mode, 0, timevector, 0)
+    
     #make yml file
     # makeyamlfile()
     #plot all sats on map
-    PlotOnMap(latitudevector, longitudevector, line0, inviewvector,PosStation)
-
+    PlotOnMap(latitudevector, longitudevector, timevector, inviewvector, PosStation, 0, mode, satelliteindex, line0, 0)
     print("done")
     #plot view of sky
     #plotinsight
+    return
+
