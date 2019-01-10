@@ -25,7 +25,7 @@ def Live(mode, line0, line1,line2,Rstation, PosStation):
   
     #Recalculate SGP4 and Continue
     k = 0
-    for j in range (0, len(line0)-1):
+    for j in range (0, len(line0)):
         Carthesian = (SGP4(line1[j], line2[j], year[k], month[k], day[k], hour[k], minute[k], second[k]))
         time = (year[k], month[k], day[k], hour[k], minute[k], second[k])
 

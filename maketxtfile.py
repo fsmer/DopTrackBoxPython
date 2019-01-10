@@ -71,16 +71,16 @@ def maketxtfile(inviewvector,line0,elevationvector,azimuthvector,mode, indexer, 
 
                 if ((inviewvector[k][i] == False) and (inviewvector[k][i+1] == True)):
                     file.write('%s'"-"'%s'"-"'%s' " " '%s'":"'%s'":"'%s' %(timevector[k][i+1])) 
-                    if (((timevector[k][i][3] < 10) and (timevector[k][i][4] < 10) ) or ((timevector[k][i][4] < 10) and (timevector[k][i][5] < 10)) or ((timevector[k][i][3] < 10) and (timevector[k][i][5] < 10))):
-                        file.write("\t")
+                    # if (((timevector[k][i][3] < 10) and (timevector[k][i][4] < 10) ) or ((timevector[k][i][4] < 10) and (timevector[k][i][5] < 10)) or ((timevector[k][i][3] < 10) and (timevector[k][i][5] < 10))):
+                    #     file.write("\t")
                     file.write("\t" "\t")
                     startazimuth = azimuthvector[k][i+1]
 
                 elif ((inviewvector[k][i] == True) and (inviewvector[k][i+1] == False)):
                     file.write('%s'"-"'%s'"-"'%s' " " '%s'":"'%s'":"'%s'  %(timevector[k][i]))
-                    if (((timevector[k][i][3] < 10) and (timevector[k][i][4] < 10) ) or ((timevector[k][i][4] < 10) and (timevector[k][i][5] < 10)) or ((timevector[k][i][3] < 10) and (timevector[k][i][5] < 10))):
-                        file.write("\t")
-                    file.write("\t" "\t"   )
+                    # if ((timevector[k][i][3] < 10) or (timevector[k][i][4] < 10) or (timevector[k][i][5] < 10) ):
+                    #     file.write("\t")
+                    file.write("\t" "\t" )
                     file.write('%d' %(maxelevation))
                     file.write("\t"  "\t" "\t" )
                     file.write('%d' %(startazimuth))

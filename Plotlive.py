@@ -24,14 +24,17 @@ def Plotlive(mode, line0, line1,line2,Rstation, Posstation):
 
     plt.draw()
 
+
     while True:
         Latvector,Lonvector, time = Live(mode, line0, line1,line2,Rstation, Posstation)
         x = Lonvector
         y = Latvector
+
         try:
             sc.set_offsets(np.c_[x,y])
             fig1.canvas.draw_idle()
             plt.pause(1)
+
         except:
             print('stop plotting live')
             return()

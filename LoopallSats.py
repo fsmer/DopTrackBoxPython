@@ -39,8 +39,7 @@ def LoopallSats(mode, line0, line1,line2,Rstation, PosStation, satelliteindex):
     #make txt file
     
 
-    maketxtfile(inviewvector,line0,elevationvector,azimuthvector,mode, 0, timevector, 0)
-    
+    maketxtfile(inviewvector,line0,elevationvector,azimuthvector, 0, satelliteindex, timevector, 0)
     #make yml file
     # makeyamlfile()
     #plot all sats on map

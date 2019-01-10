@@ -1,0 +1,28 @@
+Sat: 
+	Predict: 
+		Eazimuth: 1
+		Elevation: 2
+		Length of pass: 720.0
+		Sazimuth: 4
+		time Used UTC: 5
+		timezone used: None
+		used TLE line1: 1 32789U 08021G   19010.10250776  .00001192  00000-0  84526-4 0  9991
+		used TLE line2: 2 32789  97.4867  64.4268 0011172 315.5854  44.4476 15.06576538582937
+	Record: 
+		Start of recording: 2019110217
+		num_sample: 9
+		sample_rate: 10
+		time1 UTC: 2019-01-10 20:07:57.320123+00:00
+		time2 UTC: 2019-01-10 20:19:57.320123+00:00
+		time3 LT: 2019-01-10 21:07:57.320123
+	State: 
+		Antenna: 14
+		NORADID: 32789
+		Name: DELFI-C3 (DO-64)        
+		Priority: 1
+		Tuning Frequency: 145.870 
+	Station: 
+		Height: 0.0
+		Lat: 52.0115769
+		Lon: 4.3570677
+		Name: 20
