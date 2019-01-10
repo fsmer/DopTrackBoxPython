@@ -3,12 +3,12 @@ def Recalculate(looptime, loopdays, loophours, loopminutes, satelliteindex, line
     from Choosetime import Choosetime
     from Continue import Continue
     from PlotOnMap import PlotOnMap
-
+    
 
     ########################################################################################################################################
     #Define time
     #input: days, hours, minutes, negative minutes
-    year, month, day, hour, minute, second, localtime = Choosetime(loopdays, loophours, loopminutes, 0)
+    time0, year, month, day, hour, minute, second, localtime = Choosetime(loopdays, loophours, loopminutes, 0)
     #print(localtime)
 
     
@@ -35,6 +35,8 @@ def Recalculate(looptime, loopdays, loophours, loopminutes, satelliteindex, line
     timevector = []
 
     PosStation = (stationlon1,  stationlat1, hstation1)
+    print('test')
+    DeltaLat, DeltaLon = deltacalculator(PosStation)
 
     from GEOD2CART import GEOD2CART
     Rstation = GEOD2CART(PosStation)

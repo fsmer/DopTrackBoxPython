@@ -1,4 +1,4 @@
-def Continue(Rsat, time, Rstation):
+def Continue(Rsat, time, Rstation, DeltaLat, DeltaLon):
     #hoogte bepaald uit CART2GEOD blijkt erg slecht te zijn is hier iets anders voor zoals de baan - radus van de aarde?
     #Verder output naar txt bestand en mooi printen
     
@@ -15,7 +15,7 @@ def Continue(Rsat, time, Rstation):
     from CART2GEOD import CART2GEOD
     from Insight import Insight
     from SatElevation import SatElevation
-
+    from AzimuthCalc import AzimuthCalc 
     #Get GAST for interested time
     #input time in year, month, days, hour, minute, second
     GAST = UTC2GAST(time)
@@ -50,6 +50,7 @@ def Continue(Rsat, time, Rstation):
         if elevation <= minimumelevation:
             inview = 0
 
+    azimuth = AzimuthCalc(DeltaLat, DeltaLon, Rstation, RsatRotated)
     #output in degrees
     #print('elev, azi',elevation,azimuth)
     #return insight, latitude, longitude, elevation, azimuth

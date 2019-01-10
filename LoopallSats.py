@@ -1,4 +1,4 @@
-def LoopallSats(mode, line0, line1,line2,Rstation, PosStation, satelliteindex):
+def LoopallSats(mode, line0, line1,line2,Rstation, PosStation, satelliteindex, DeltaLat, DeltaLon):
     from SGP4 import SGP4
     from Continue import Continue
     from Choosetime import Choosetime
@@ -22,7 +22,7 @@ def LoopallSats(mode, line0, line1,line2,Rstation, PosStation, satelliteindex):
         time = (year[k], month[k], day[k], hour[k], minute[k], second[k])
 
         cartesianvector.append(Carthesian)
-        inview, latitude, longitude, elevation, azimuth = Continue(Carthesian[0], time, Rstation)
+        inview, latitude, longitude, elevation, azimuth = Continue(Carthesian[0], time, Rstation, DeltaLat, DeltaLon)
         
         elevationvector.append(elevation)
         azimuthvector.append(azimuth)
@@ -34,7 +34,7 @@ def LoopallSats(mode, line0, line1,line2,Rstation, PosStation, satelliteindex):
         
         
         CPU = psutil.cpu_percent()
-        print('CPU usage = ', CPU)
+        # print('CPU usage = ', CPU)
 
     #make txt file
     
@@ -43,7 +43,7 @@ def LoopallSats(mode, line0, line1,line2,Rstation, PosStation, satelliteindex):
     #make yml file
     # makeyamlfile()
     #plot all sats on map
-    PlotOnMap(latitudevector, longitudevector, timevector, inviewvector, PosStation, 0, mode, satelliteindex, line0, 0)
+    # PlotOnMap(latitudevector, longitudevector, timevector, inviewvector, PosStation, 0, mode, satelliteindex, line0, 0)
     print("done")
     #plot view of sky
     #plotinsight
