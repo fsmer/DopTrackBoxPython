@@ -91,7 +91,7 @@ def LoopxSats(mode, line0, line1,line2,Rstation,index, indexvector, loopdays, lo
     #make yml file
     # makeyamlfile()
     #plot all sats on map
-    PlotOnMap(xlatitudevector, xlongitudevector, xtimevector, xinviewvector, PosStation, samplesback, mode, index, line0, indexer, elevationvector, azimuthvector)
+    PlotOnMap(xlatitudevector, xlongitudevector, xtimevector, xinviewvector, PosStation, samplesback, mode, index, line0, indexer, elevationvector, azimuthvector, frequency)
     print("done")
     #plot view of sky
     #plotinsight()
