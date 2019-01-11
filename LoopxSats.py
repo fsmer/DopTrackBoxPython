@@ -1,4 +1,4 @@
-def LoopxSats(mode, line0, line1,line2,Rstation,index, indexvector, loopdays, loophours, loopminutes, PosStation, minback):
+def LoopxSats(mode, line0, line1,line2,Rstation,index, indexvector, loopdays, loophours, loopminutes, PosStation, minback, DeltaLat, DeltaLon, frequency):
     from SGP4 import SGP4
     from Continue import Continue
     from Choosetime import Choosetime   
@@ -55,7 +55,7 @@ def LoopxSats(mode, line0, line1,line2,Rstation,index, indexvector, loopdays, lo
 
             time = (year[k], month[k], day[k], hour[k], minute[k], second[k])
 
-            inview, latitude, longitude, elevation, azimuth = Continue(Carthesian[0], time, Rstation, PosStation)
+            inview, latitude, longitude, elevation, azimuth = Continue(Carthesian[0], time, Rstation, DeltaLat, DeltaLon)
             elevationvector.append(elevation)
             azimuthvector.append(azimuth)
             inviewvector.append(inview)
@@ -87,11 +87,11 @@ def LoopxSats(mode, line0, line1,line2,Rstation,index, indexvector, loopdays, lo
     
 
     #make txt file
-    maketxtfile(xinviewvector,line0,xelevationvector,xazimuthvector,mode, indexer, xtimevector, samplesback)
+    maketxtfile(xinviewvector,line0,xelevationvector,xazimuthvector,mode, indexer, xtimevector, samplesback, frequency)
     #make yml file
     # makeyamlfile()
     #plot all sats on map
-    PlotOnMap(xlatitudevector, xlongitudevector, xtimevector, xinviewvector, PosStation, samplesback, mode, index, line0, indexer)
+    PlotOnMap(xlatitudevector, xlongitudevector, xtimevector, xinviewvector, PosStation, samplesback, mode, index, line0, indexer, elevationvector, azimuthvector)
     print("done")
     #plot view of sky
     #plotinsight()

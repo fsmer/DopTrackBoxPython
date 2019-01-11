@@ -1,38 +1,16 @@
-#https://www.youtube.com/watch?v=XUNaGFa9xCM 
+import matplotlib.pyplot as plt
+import numpy as np
 
-# https://plot.ly/python/static-image-export/ for static images
+ax = plt.subplot(1, 1, 1, polar=True)
 
-# https://plot.ly/python/file-options/ for updating of plots
-import plotly as py 
-import plotly.graph_objs as go 
-import ipywidgets as widgets
-import numpy as np 
-from scipy import special
+def mapr(r):
+   """Remap the radial axis."""
+   return 90 - r
 
-py.offline.init_notebook_mode(connected=True)
+r = np.arange(0, 90, 0.01)
+theta = 2 * np.pi * r / 90
 
-x = np.linspace(0,np.pi, 1000)
-
-layout = go.Layout(
-    title = 'SIMPLE EXAMPLE',
-    yaxis = dict(
-        title = 'volts'
-    ),
-    xaxis = dict(
-        title = 'nanosecs'
-    )
-)
-
-
-trace1 = go.Scatter(
-    x = x,
-    y = np.sin(x),
-    mode = 'lines',
-    name = 'sin(x)',
-    line = dict(
-        shape='spline'
-    )
-)
-
-fig = go.Figure(data=[trace1], layout = layout)
-py.offline.plot(fig)
+ax.plot(theta, mapr(r))
+ax.set_yticks(range(0, 90, 10))                   # Define the yticks
+ax.set_yticklabels(map(str, range(90, 0, -10)))   # Change the labels
+plt.show()
