@@ -27,9 +27,9 @@ def Run(mode1, line0, line1, line2, PosStation, satelliteindex, indexvector, pri
         LoopxSats(mode, line0, line1,line2,Rstation,satelliteindex, indexvector, loopdays, loophours, loopminutes, PosStation, minback, DeltaLat, DeltaLon, info)
     elif mode == 2:
         print('Making YML files')
-        MakeYMLfiles(mode, line0, line1,line2,Rstation,satelliteindex, indexvector, loopdays, loophours, loopminutes, PosStation, minback, priorityvector, priority, info)
+        MakeYMLfiles(mode, line0, line1,line2,Rstation,satelliteindex, indexvector, loopdays, loophours, loopminutes, PosStation, minback, priorityvector, priority, info, DeltaLat, DeltaLon)
     elif mode == 3:
-        Plotlive(mode, line0, line1,line2,Rstation, PosStation)
+        Plotlive(mode, line0, line1,line2,Rstation, PosStation, DeltaLat, DeltaLon, satelliteindex)
         # LifeUpdating(mode, line0, line1,line2,Rstation)
         #print("LiveUpdating mode has not yet been developed")
     else:

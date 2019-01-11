@@ -327,7 +327,7 @@ minback.insert(tk.END,0) #set default value
 
 minelevation = tk.IntVar()
 tk.Label(frame, 
-        text="""Minimal Elevation:""",
+        text="""Minimal Elevation (not used yet):""",
         padx = 20).grid(row = 7, column = 0, sticky = W)
 minelevation = tk.Entry(frame)
 minelevation.grid(row = 7, column = 1, sticky = W)

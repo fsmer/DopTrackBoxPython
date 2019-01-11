@@ -1,4 +1,4 @@
-def Live(mode, line0, line1,line2,Rstation, PosStation):
+def Live(mode, line0, line1,line2,Rstation, PosStation, DeltaLat, DeltaLon, index):
     from SGP4 import SGP4
     from Continue import Continue
     from Choosetime import Choosetime
@@ -30,7 +30,7 @@ def Live(mode, line0, line1,line2,Rstation, PosStation):
         time = (year[k], month[k], day[k], hour[k], minute[k], second[k])
 
         cartesianvector.append(Carthesian)
-        inview, latitude, longitude, elevation, azimuth = Continue(Carthesian[0], time, Rstation, PosStation)
+        inview, latitude, longitude, elevation, azimuth = Continue(Carthesian[0], time, Rstation, DeltaLat, DeltaLon)
         
         elevationvector.append(elevation)
         azimuthvector.append(azimuth)
