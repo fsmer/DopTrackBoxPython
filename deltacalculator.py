@@ -10,7 +10,7 @@ def deltacalculator(PosStation, Rstation):
     LatStep = 0.5
     LonStep = 0.5
 
-    print(Rstation)
+    # print(Rstation)
     DeltaN = GEOD2CART((Lon,(Lat+LatStep),0))
     DeltaE = GEOD2CART(((Lon+LonStep),Lat,0))
 
