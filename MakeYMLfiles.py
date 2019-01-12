@@ -50,6 +50,8 @@ def MakeYMLfiles(mode, line0, line1,line2,Rstation,index, indexvector, loopdays,
             j = index
         else:
             j = indexer[l]
+
+        # Do the calculations
         for k in range(0,len(year)-1):
 
             Carthesian = (SGP4(line1[j], line2[j], year[k], month[k], day[k], hour[k], minute[k], second[k]))
@@ -64,10 +66,8 @@ def MakeYMLfiles(mode, line0, line1,line2,Rstation,index, indexvector, loopdays,
             latitudevector.append(latitude)
             longitudevector.append(longitude)
             timevector.append(time)
-            k +=1
-
-            #Split passings, needed inviewvector and time
-
+            
+        #Split passings, needed inviewvector and time
         firstline = line1[j]
         secondline = line2[j]
         IDTLE = str(secondline[2:7])
@@ -78,37 +78,35 @@ def MakeYMLfiles(mode, line0, line1,line2,Rstation,index, indexvector, loopdays,
         else:
             pio = priorityvector[l]
 
-
         beginpassing = []
         endpassing = []
         beginregional = []
         beginUTC = []
         endUTC = []
+        
         #begin or end is in passing
         if inviewvector[0] is True:
              beginpassing.append(0)
              beginregional.append(regionaltime[0])
              beginUTC.append(time1[0])
              
-    
         for j in range(1, len(inviewvector)):
              if inviewvector[j]  is True and inviewvector[j-1] is False:
                 beginpassing.append(j)
                 beginregional.append(regionaltime[j])
                 beginUTC.append(time1[j])
-                j=j+1
              elif inviewvector[j]  is False and inviewvector[j-1] is True:
                  endpassing.append(j)
                  endUTC.append(time1[j])
 
         if inviewvector[len(inviewvector)-1] is True:
-             endpassing.append(len(inviewvector)-1)
-             endUTC.append(time1[len(inviewvector)-1])
+             endpassing.append(len(inviewvector))
+             endUTC.append(time1[len(inviewvector)])
 
+        #print(inviewvector)
         #print(beginpassing, endpassing)
-        
 
-        
+        # Write data to file
         if len(beginpassing) is not 0:
             for m in range(0, len(beginpassing)):
                  beginregional1 = beginregional[m]
@@ -121,7 +119,7 @@ def MakeYMLfiles(mode, line0, line1,line2,Rstation,index, indexvector, loopdays,
 
                  numsample = timedelta*PosStation[4]
 
-                 yml = FormatYML(azimuthvector[endpassing[m]-1], maxelevation, timedelta, azimuthvector[beginpassing[m]], 'TIME USED UTC', timezone, firstline, secondline, ''.join(beginregionaldate), numsample, PosStation[4], beginUTC[m], endUTC[m], beginregional[m], 'ANTENNA', IDTLE, namesat, pio, freq, PosStation[2], PosStation[1], PosStation[0], PosStation[3])
+                 yml = FormatYML(azimuthvector[endpassing[m]], maxelevation, timedelta, azimuthvector[beginpassing[m]], 'TIME USED UTC', timezone, firstline, secondline, ''.join(beginregionaldate), numsample, PosStation[4], beginUTC[m], endUTC[m], beginregional[m], 'ANTENNA', IDTLE, namesat, pio, freq, PosStation[2], PosStation[1], PosStation[0], PosStation[3])
 
                  filename = namesat.rstrip()+ '_' + IDTLE + '_' + ''.join(beginregionaldate) +'.yml'
                  file = open(filename, 'w')
@@ -131,12 +129,7 @@ def MakeYMLfiles(mode, line0, line1,line2,Rstation,index, indexvector, loopdays,
                  CPU = psutil.cpu_percent()
                  print('CPU usage = ', CPU)
 
-        
-             
-        
-        
-
-
+        # Clear all the vectors
         elevationvector.clear()
         azimuthvector.clear()
         inviewvector.clear()
@@ -151,8 +144,6 @@ def MakeYMLfiles(mode, line0, line1,line2,Rstation,index, indexvector, loopdays,
         #print(l)
 
     os.chdir(oldpath)
-
-     
 
     #make txt file
     #maketxtfile()

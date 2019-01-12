@@ -48,7 +48,7 @@ def Continue(Rsat, time, Rstation, DeltaLat, DeltaLon):
 
     if inview == True:
         if elevation <= minimumelevation:
-            inview = 0
+            inview = False
 
     azimuth = AzimuthCalc(DeltaLat, DeltaLon, Rstation, RsatRotated)
     #output in degrees
