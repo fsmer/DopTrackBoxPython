@@ -79,7 +79,7 @@ def PlotOnMap(Latvector,Lonvector, time, insight, station, minback, mode, satell
         plt.plot(station[0],station[1],'r+', label='Groundstation')
 
         # we can change the color of each ground track through going through a list.
-        colorlist = ['#7e1e9c', '#15b01a', '#0343df', '#ff81c0', '#95d0fc', '#f97306', '#029386', '#c20078',' #ffff14', '#033500', '#650021' , '#e6daa6']
+        colorlist = ['#7e1e9c', '#15b01a', '#0343df', '#ff81c0', '#95d0fc', '#f97306', '#029386', '#c20078','y', '#033500', '#650021' , '#e6daa6']
         indexlen = len(indexer)
         lenlon = len(Lonvector[0])
         for i in range(0,indexlen):
