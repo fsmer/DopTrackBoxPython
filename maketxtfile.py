@@ -57,9 +57,9 @@ def maketxtfile(inviewvector,line0,elevationvector,azimuthvector,mode, indexer, 
                 if len(frequency[j]) < 16:
                     file.write("\t" )
                 file.write("\t""\t"  )
-                file.write('%s' %(latitudevector[i]))
+                file.write('%s' %(latitudevector[j]))
                 file.write("\t" "\t" )
-                file.write('%s' %(longitudevector[i]))
+                file.write('%s' %(longitudevector[j]))
                 file.write("\n")
     
     if mode == 1:   #mode 1 we have an index andor a indexvector 
