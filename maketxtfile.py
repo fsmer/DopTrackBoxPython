@@ -1,4 +1,4 @@
-def maketxtfile(inviewvector,line0,elevationvector,azimuthvector,mode, indexer, timevector, samplesback, frequency):
+def maketxtfile(inviewvector,line0,elevationvector,azimuthvector,mode, indexer, timevector, samplesback, frequency, latitudevector, longitudevector):
     import os
     import webbrowser
     if os.path.isfile("inview.txt"):
@@ -15,7 +15,7 @@ def maketxtfile(inviewvector,line0,elevationvector,azimuthvector,mode, indexer, 
         file.write("\n")
         file.write("--------------------------------------------------------------------")
         file.write("\n")
-        file.write("Satellite" "\t" "\t" "\t" "\t"   "Elevation" "\t" "Azimuth" "\t""\t" "Frequency""\n"  )
+        file.write("Satellite" "\t" "\t" "\t" "\t"   "Elevation" "\t" "Azimuth" "\t""\t" "Frequency" "\t""\t""\t" "Latitude" "\t""\t" "\t""Longitude""\n"  )
         file.write("\n")
         for i in range(0,length):
             if inviewvector[i] ==True:
@@ -26,6 +26,14 @@ def maketxtfile(inviewvector,line0,elevationvector,azimuthvector,mode, indexer, 
                 file.write('%d' %(azimuthvector[i]))
                 file.write("\t" "\t" )
                 file.write('%s' %(frequency[i]))
+                if len(frequency[i]) < 1:
+                    file.write("\t" )
+                if len(frequency[i]) < 16:
+                    file.write("\t" )
+                file.write("\t""\t"  )
+                file.write('%s' %(latitudevector[i]))
+                file.write("\t" "\t" )
+                file.write('%s' %(longitudevector[i]))
                 file.write("\n")
         file.write("\n")
         file.write("\n")
@@ -44,6 +52,14 @@ def maketxtfile(inviewvector,line0,elevationvector,azimuthvector,mode, indexer, 
                 file.write('%d' %(azimuthvector[j]))
                 file.write("\t" "\t" )
                 file.write('%s' %(frequency[j]))
+                if len(frequency[j]) < 1:
+                    file.write("\t" )
+                if len(frequency[j]) < 16:
+                    file.write("\t" )
+                file.write("\t""\t"  )
+                file.write('%s' %(latitudevector[i]))
+                file.write("\t" "\t" )
+                file.write('%s' %(longitudevector[i]))
                 file.write("\n")
     
     if mode == 1:   #mode 1 we have an index andor a indexvector 

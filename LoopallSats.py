@@ -1,4 +1,4 @@
-def LoopallSats(mode, line0, line1,line2,Rstation, PosStation, satelliteindex, DeltaLat, DeltaLon, frequency):
+def LoopallSats(mode, line0, line1,line2,Rstation, PosStation, satelliteindex, DeltaLat, DeltaLon, frequency, minelevation):
     from SGP4 import SGP4
     from Continue import Continue
     from Choosetime import Choosetime
@@ -23,7 +23,7 @@ def LoopallSats(mode, line0, line1,line2,Rstation, PosStation, satelliteindex, D
         time = (year[k], month[k], day[k], hour[k], minute[k], second[k])
 
         cartesianvector.append(Carthesian)
-        inview, latitude, longitude, elevation, azimuth = Continue(Carthesian[0], time, Rstation, DeltaLat, DeltaLon)
+        inview, latitude, longitude, elevation, azimuth = Continue(Carthesian[0], time, Rstation, DeltaLat, DeltaLon, minelevation)
         
         elevationvector.append(elevation)
         azimuthvector.append(azimuth)
@@ -40,10 +40,10 @@ def LoopallSats(mode, line0, line1,line2,Rstation, PosStation, satelliteindex, D
     #make txt file
     
 
-    maketxtfile(inviewvector,line0,elevationvector,azimuthvector, 0, satelliteindex, timevector, 0, frequency)
+    maketxtfile(inviewvector,line0,elevationvector,azimuthvector, 0, satelliteindex, timevector, 0, frequency, latitudevector, longitudevector)
 
     #plot all sats on map
-    PlotOnMap(latitudevector, longitudevector, timevector, inviewvector, PosStation, 0, mode, satelliteindex, line0, 0, elevationvector, azimuthvector, frequency)
+    PlotOnMap(latitudevector, longitudevector, timevector, inviewvector, PosStation, 0, mode, satelliteindex, line0, 0, elevationvector, azimuthvector)
 
     #plot view of sky
     # PlotSkyView(inviewvector, elevationvector, azimuthvector)

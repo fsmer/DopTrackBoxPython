@@ -30,7 +30,7 @@ def Live(mode, line0, line1,line2,Rstation, PosStation, DeltaLat, DeltaLon, inde
         time = (year[k], month[k], day[k], hour[k], minute[k], second[k])
 
         cartesianvector.append(Carthesian)
-        inview, latitude, longitude, elevation, azimuth = Continue(Carthesian[0], time, Rstation, DeltaLat, DeltaLon)
+        inview, latitude, longitude, elevation, azimuth = Continue(Carthesian[0], time, Rstation, DeltaLat, DeltaLon, minelevation)
         
         elevationvector.append(elevation)
         azimuthvector.append(azimuth)
