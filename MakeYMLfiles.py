@@ -59,7 +59,7 @@ def MakeYMLfiles(mode, line0, line1,line2,Rstation,index, indexvector, loopdays,
 
             time = (year[k], month[k], day[k], hour[k], minute[k], second[k])
 
-            inview, latitude, longitude, elevation, azimuth = Continue(Carthesian[0], time, Rstation, DeltaLat, DeltaLon, minelevation)
+            inview, latitude, longitude, elevation, azimuth = Continue(Carthesian[0], time, Rstation, DeltaLat, DeltaLon)
             elevationvector.append(elevation)
             azimuthvector.append(azimuth)
             inviewvector.append(inview)
@@ -112,6 +112,7 @@ def MakeYMLfiles(mode, line0, line1,line2,Rstation,index, indexvector, loopdays,
                  beginregional1 = beginregional[m]
                  timezone = get_localzone()
                  beginregionaldate = [str(beginregional1.year), str(beginregional1.month), str(beginregional1.day), str(beginregional1.hour), str(beginregional1.minute)]
+                 beginUTCdate = [str(beginUTC[m].year), str(beginUTC[m].month), str(beginUTC[m].day), str(beginUTC[m].hour), str(beginUTC[m].minute)]
                  timedelta = (endUTC[m]-beginUTC[m]).total_seconds()
 
                  elevationpass = elevationvector[beginpassing[m]:endpassing[m]]
@@ -119,7 +120,7 @@ def MakeYMLfiles(mode, line0, line1,line2,Rstation,index, indexvector, loopdays,
 
                  numsample = timedelta*PosStation[4]
 
-                 yml = FormatYML(azimuthvector[endpassing[m]], maxelevation, timedelta, azimuthvector[beginpassing[m]], 'TIME USED UTC', timezone, firstline, secondline, ''.join(beginregionaldate), numsample, PosStation[4], beginUTC[m], endUTC[m], beginregional[m], 'ANTENNA', IDTLE, namesat, pio, freq, PosStation[2], PosStation[1], PosStation[0], PosStation[3])
+                 yml = FormatYML(azimuthvector[endpassing[m]], maxelevation, int(timedelta), azimuthvector[beginpassing[m]], ''.join(beginUTCdate), timezone, firstline, secondline, ''.join(beginregionaldate), numsample, PosStation[4], '', '', '', 'ANTENNA', IDTLE, namesat, pio, freq, PosStation[2], PosStation[1], PosStation[0], PosStation[3])
 
                  filename = namesat.rstrip()+ '_' + IDTLE + '_' + ''.join(beginregionaldate) +'.yml'
                  file = open(filename, 'w')
