@@ -1,4 +1,4 @@
-def MakeYMLfiles(mode, line0, line1,line2,Rstation,index, indexvector, loopdays, loophours, loopminutes, PosStation, minback, priorityvector, priority, info, DeltaLat, DeltaLon):
+def MakeYMLfiles(mode, line0, line1,line2,Rstation,index, indexvector, loopdays, loophours, loopminutes, PosStation, minback, priorityvector, priority, info, DeltaLat, DeltaLon, minelevation):
     
     from SGP4 import SGP4
     from Continue import Continue
@@ -59,7 +59,7 @@ def MakeYMLfiles(mode, line0, line1,line2,Rstation,index, indexvector, loopdays,
 
             time = (year[k], month[k], day[k], hour[k], minute[k], second[k])
 
-            inview, latitude, longitude, elevation, azimuth = Continue(Carthesian[0], time, Rstation, DeltaLat, DeltaLon)
+            inview, latitude, longitude, elevation, azimuth = Continue(Carthesian[0], time, Rstation, DeltaLat, DeltaLon, 0)
             elevationvector.append(elevation)
             azimuthvector.append(azimuth)
             inviewvector.append(inview)

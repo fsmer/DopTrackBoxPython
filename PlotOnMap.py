@@ -39,7 +39,7 @@ def PlotOnMap(Latvector,Lonvector, time, insight, station, minback, mode, satell
 
         ax.legend(bbox_to_anchor=(0., 1.02, 1., .102),  ncol = 1)
 
-        plt.xlabel('Lontitude')
+        plt.xlabel('Longtitude')
         plt.ylabel('Latitude')
         plt.text(90, 100, 'Satellites in database',
             horizontalalignment='center')
