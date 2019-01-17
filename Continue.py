@@ -1,4 +1,4 @@
-def Continue(Rsat, time, Rstation, DeltaLat, DeltaLon):
+def Continue(Rsat, time, Rstation, DeltaLat, DeltaLon, minelevation):
     #hoogte bepaald uit CART2GEOD blijkt erg slecht te zijn is hier iets anders voor zoals de baan - radus van de aarde?
     #Verder output naar txt bestand en mooi printen
     
@@ -43,12 +43,13 @@ def Continue(Rsat, time, Rstation, DeltaLat, DeltaLon):
 
     #get elevation and azimuth?
     #input Rstation and Rsatrotated
-    minimumelevation = 0
+
+    minimumelevation = minelevation
     elevation, azimuth = SatElevation(Rstation, RsatRotated)
 
     if inview == True:
         if elevation <= minimumelevation:
-            inview = 0
+            inview = False
 
     azimuth = AzimuthCalc(DeltaLat, DeltaLon, Rstation, RsatRotated)
     #output in degrees

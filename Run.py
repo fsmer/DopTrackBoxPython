@@ -20,16 +20,16 @@ def Run(mode1, line0, line1, line2, PosStation, satelliteindex, indexvector, pri
 
     if mode == 0:
         print('Looping all satellites')
-        LoopallSats(mode, line0, line1,line2,Rstation, PosStation, satelliteindex, DeltaLat, DeltaLon, info)
+        LoopallSats(mode, line0, line1,line2,Rstation, PosStation, satelliteindex, DeltaLat, DeltaLon, info, minelevation)
     elif mode == 1:
         #in the UI the priority list is added to the plot and also the one selected now. In case no priority list then just satelliteindex
         print('Looping x satellites')
-        LoopxSats(mode, line0, line1,line2,Rstation,satelliteindex, indexvector, loopdays, loophours, loopminutes, PosStation, minback, DeltaLat, DeltaLon, info)
+        LoopxSats(mode, line0, line1,line2,Rstation,satelliteindex, indexvector, loopdays, loophours, loopminutes, PosStation, minback, DeltaLat, DeltaLon, info, minelevation)
     elif mode == 2:
         print('Making YML files')
-        MakeYMLfiles(mode, line0, line1,line2,Rstation,satelliteindex, indexvector, loopdays, loophours, loopminutes, PosStation, minback, priorityvector, priority, info)
+        MakeYMLfiles(mode, line0, line1,line2,Rstation,satelliteindex, indexvector, loopdays, loophours, loopminutes, PosStation, minback, priorityvector, priority, info, DeltaLat, DeltaLon, minelevation)
     elif mode == 3:
-        Plotlive(mode, line0, line1,line2,Rstation, PosStation)
+        Plotlive(mode, line0, line1,line2,Rstation, PosStation, DeltaLat, DeltaLon, satelliteindex)
         # LifeUpdating(mode, line0, line1,line2,Rstation)
         #print("LiveUpdating mode has not yet been developed")
     else:

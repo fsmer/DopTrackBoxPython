@@ -50,7 +50,7 @@ def recalc():
     locationindex = locationbox.current()
     satelliteindex = satellitebox.current()
     satellitename = satellitebox.get()
-    minelevation1 = minelevation.get()
+    minelevation1 = int(minelevation.get())
     stationlon1 = float(lonvector[locationindex])
     stationlat1 = float(latvector[locationindex])
     stationname = str(locvector[locationindex])
@@ -63,8 +63,10 @@ def recalc():
     minback1 = int(minback.get())
     PosStation = [stationlon1, stationlat1, hstation1, stationname, stationrate]
     priority1 = priority.get()
+    
 
-    Run(mode1, line0, line1, line2, PosStation, satelliteindex, indexvector, priorityvector, priority1, loopdays, loophours, loopminutes, minback1, info, minelevation)
+    
+    Run(mode1, line0, line1, line2, PosStation, satelliteindex, indexvector, priorityvector, priority1, loopdays, loophours, loopminutes, minback1, info, minelevation1)
     #plot
     return
 

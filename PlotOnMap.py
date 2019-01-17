@@ -39,7 +39,7 @@ def PlotOnMap(Latvector,Lonvector, time, insight, station, minback, mode, satell
 
         ax.legend(bbox_to_anchor=(0., 1.02, 1., .102),  ncol = 1)
 
-        plt.xlabel('Lontitude')
+        plt.xlabel('Longtitude')
         plt.ylabel('Latitude')
         plt.text(90, 100, 'Satellites in database',
             horizontalalignment='center')
@@ -68,41 +68,45 @@ def PlotOnMap(Latvector,Lonvector, time, insight, station, minback, mode, satell
         #go 120 minutes back and 120 minutes forward
         #give the past a differnt color and maybe an arrow
         #plot from indexer
-        forward = minback #groundtrack propegation forward
-        img = plt.imread("map.png")
-        fig1, ax = plt.subplots()
-        ax.imshow(img, extent=[-180, 180, -90, 90])
-        ax.set_aspect(1)
-        plt.xlabel('Lontitude')
-        plt.ylabel('Latitude')
-        plt.text(90, 100, 'Satellites in database', horizontalalignment='center')
-        plt.plot(station[0],station[1],'r+', label='Groundstation')
+        if len(indexer) < 5: 
 
-        # we can change the color of each ground track through going through a list.
-        colorlist = ['#7e1e9c', '#15b01a', '#0343df', '#ff81c0', '#95d0fc', '#f97306', '#029386', '#c20078',' #ffff14', '#033500', '#650021' , '#e6daa6']
-        indexlen = len(indexer)
-        lenlon = len(Lonvector[0])
-        for i in range(0,indexlen):
-            plt.plot(Lonvector[i][minback], Latvector[i][minback], 'bx',zorder=10)
-            if i >= len(colorlist)/2:
-                print('To many inputs for color scale')
-                
-            for j in range(0, minback+forward):
-                if j < minback:
+            forward = minback #groundtrack propegation forward
+            img = plt.imread("map.png")
+            fig1, ax = plt.subplots()
+            ax.imshow(img, extent=[-180, 180, -90, 90])
+            ax.set_aspect(1)
+            plt.xlabel('Lontitude')
+            plt.ylabel('Latitude')
+            plt.text(90, 100, 'Satellites in selection', horizontalalignment='center')
+            plt.plot(station[0],station[1],'r+', label='Groundstation')
+
+            # we can change the color of each ground track through going through a list.
+            colorlist = ['#7e1e9c', '#15b01a', '#0343df', '#ff81c0', '#95d0fc', '#f97306', '#029386', '#c20078','y', '#033500', '#650021' , '#e6daa6']
+            indexlen = len(indexer)
+            lenlon = len(Lonvector[0])
+            for i in range(0,indexlen):
+                plt.plot(Lonvector[i][minback], Latvector[i][minback], 'bx',zorder=10)
+                if i >= len(colorlist)/2:
+                    print('To many inputs for color scale')
                     
-                    plt.plot(Lonvector[i][j], Latvector[i][j], marker = '.', color = colorlist[2*i],zorder=2)
-                else:
-               
-                    plt.plot(Lonvector[i][j], Latvector[i][j],marker = '.', color = colorlist[2*i+1],zorder=1)
-            #the arrows are pointed over the map from point to the next point, this means that they can be very buggy
-            plt.arrow(Lonvector[i][minback], Latvector[i][minback], (Lonvector[i][minback+1]-Lonvector[i][minback])/1000, (Latvector[i][minback+1]-Latvector[i][minback])/1000,shape='full', lw=4, length_includes_head=True, head_width=3, color = 'r',zorder=5 )    
-            ax.annotate(satellites[indexer[i]], (Lonvector[i][minback], Latvector[i][minback]), size = 7)
+                for j in range(0, minback+forward):
+                    if j < minback:
+                        
+                        plt.plot(Lonvector[i][j], Latvector[i][j], marker = '.', color = colorlist[2*i],zorder=2)
+                    else:
+                
+                        plt.plot(Lonvector[i][j], Latvector[i][j],marker = '.', color = colorlist[2*i+1],zorder=1)
+                #the arrows are pointed over the map from point to the next point, this means that they can be very buggy
+                plt.arrow(Lonvector[i][minback], Latvector[i][minback], (Lonvector[i][minback+1]-Lonvector[i][minback])/1000, (Latvector[i][minback+1]-Latvector[i][minback])/1000,shape='full', lw=4, length_includes_head=True, head_width=3, color = 'r',zorder=5 )    
+                ax.annotate(satellites[indexer[i]], (Lonvector[i][minback], Latvector[i][minback]), size = 7)
+        
+        
+            plt.show(block=False)
+        else:
+            print('To many satellite inputs for plot color scale')
        
-       
-        plt.show(block=False)
-       
-    elif (mode == 3):
-        print("Visual for life updating is not yet ready")
+    # elif (mode == 3):
+    #     print("Visual for life updating is not yet ready")
 
     # img = plt.imread("map.png")
     # # implot = plt.imshow(im)
