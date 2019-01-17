@@ -92,13 +92,13 @@ def PlotOnMap(Latvector,Lonvector, time, insight, station, minback, mode, satell
                 for j in range(0, minback+forward):
                     if j < minback:
                         
-                        plt.plot(Lonvector[i][j], Latvector[i][j], marker = '.', color = colorlist[2*i],zorder=2)
+                        plt.plot(Lonvector[i][j], Latvector[i][j], marker = '.', color = colorlist[i],zorder=2)
                     else:
                 
-                        plt.plot(Lonvector[i][j], Latvector[i][j],marker = '.', color = colorlist[2*i+1],zorder=1)
+                        plt.plot(Lonvector[i][j], Latvector[i][j],marker = '.', color = colorlist[i],zorder=1)
                 #the arrows are pointed over the map from point to the next point, this means that they can be very buggy
-                plt.arrow(Lonvector[i][minback], Latvector[i][minback], (Lonvector[i][minback+1]-Lonvector[i][minback])/1000, (Latvector[i][minback+1]-Latvector[i][minback])/1000,shape='full', lw=4, length_includes_head=True, head_width=3, color = 'r',zorder=5 )    
-                ax.annotate(satellites[indexer[i]], (Lonvector[i][minback], Latvector[i][minback]), size = 7)
+                plt.arrow(Lonvector[i][minback], Latvector[i][minback], (Lonvector[i][minback+1]-Lonvector[i][minback])/1000, (Latvector[i][minback+1]-Latvector[i][minback])/1000,shape='full', lw=4, length_includes_head=True, head_width=2, color = '#000000',zorder=5 )    
+                ax.annotate(satellites[indexer[i]], (Lonvector[i][minback], Latvector[i][minback]), size = 9,color = colorlist[i],zorder=11)
         
         
             plt.show(block=False)
