@@ -9,6 +9,9 @@ def LoopallSats(mode, line0, line1,line2,Rstation, PosStation, satelliteindex, D
     import psutil
     time1, year, month, day, hour, minute, second, regionaltime = Choosetime(0, 0, 1, 0)
 
+   
+
+
     cartesianvector = []
     elevationvector = []
     azimuthvector = []

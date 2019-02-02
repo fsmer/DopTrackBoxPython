@@ -86,7 +86,7 @@ def PlotOnMap(Latvector,Lonvector, time, insight, station, minback, mode, satell
             lenlon = len(Lonvector[0])
             for i in range(0,indexlen):
                 plt.plot(Lonvector[i][minback], Latvector[i][minback], 'bx',zorder=10)
-                if i >= len(colorlist)/2:
+                if i >= len(colorlist):
                     print('To many inputs for color scale')
                     
                 for j in range(0, minback+forward):
